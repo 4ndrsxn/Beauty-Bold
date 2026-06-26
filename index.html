@@ -1,9 +1,29 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html lang="en">
 <meta charset="UTF-8">
-<title>Bloom & Gloom — Luxury Beauty</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty & Bold — Luxury Makeup & Skincare in Kenya</title>
+<meta name="description" content="Shop premium makeup, skincare and beauty essentials at Beauty & Bold. M-Pesa checkout, free delivery over KES 5,000, cruelty-free formulas — delivered across Kenya.">
+<meta name="keywords" content="beauty products Kenya, makeup Nairobi, online beauty shop Kenya, skincare Kenya, cosmetics Kenya">
+<meta name="robots" content="index, follow">
+<!-- TODO: replace with your live domain once deployed -->
+<link rel="canonical" href="https://www.beautyandbold.co.ke/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Beauty & Bold">
+<meta property="og:title" content="Beauty & Bold — Luxury Makeup & Skincare in Kenya">
+<meta property="og:description" content="Premium makeup, skincare and beauty essentials with free delivery over KES 5,000 and M-Pesa checkout.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=1200&h=630&fit=crop&auto=format">
+<meta property="og:url" content="https://www.beautyandbold.co.ke/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Beauty & Bold — Luxury Makeup & Skincare in Kenya">
+<meta name="twitter:description" content="Premium makeup, skincare and beauty essentials with free delivery over KES 5,000 and M-Pesa checkout.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=1200&h=630&fit=crop&auto=format">
+<meta name="theme-color" content="#C9A96E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -19,6 +39,8 @@
     --ivory: #FFFDF9;
     --charcoal: #2C2520;
     --warm-gray: #8A7D75;
+    --ink: #2C2520;
+    --gold-deep-text: #9C7A40;
     --border: rgba(201,169,110,0.25);
     --border-hover: rgba(201,169,110,0.6);
     --font: 'Cormorant Garamond', Georgia, serif;
@@ -60,7 +82,7 @@
   .hero-floaters { z-index: 2; }
   .hero-tag { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 500; }
   .hero-title { font-family: var(--font); font-size: 48px; line-height: 1.15; color: var(--charcoal); margin-bottom: 1.2rem; font-style: italic; }
-  .hero-title span { color: var(--gold-deep); }
+  .hero-title span { color: var(--gold-deep-text); }
   .hero-sub { font-size: 15px; color: var(--warm-gray); line-height: 1.7; margin-bottom: 2rem; max-width: 380px; }
   .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
   .btn-primary { background: var(--charcoal); color: var(--cream); padding: 13px 28px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; border: none; cursor: pointer; border-radius: 2px; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 2px 14px rgba(44,37,32,0.14); }
@@ -111,7 +133,7 @@
   .ed-hero::after { content:''; position:absolute; bottom:-30px; left:-30px; width:120px; height:120px; border-radius:50%; background:rgba(232,196,192,0.25); pointer-events:none; }
   .ed-hero:hover { transform:scale(1.012); }
   .ed-hero-emoji { font-size:80px; line-height:1; margin-bottom:1rem; filter:drop-shadow(0 8px 16px rgba(44,37,32,0.15)); z-index:1; }
-  .ed-hero-tag { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--gold-deep); margin-bottom:0.4rem; z-index:1; }
+  .ed-hero-tag { font-size:9px; letter-spacing:3px; text-transform:uppercase; color: var(--gold-deep-text); margin-bottom:0.4rem; z-index:1; }
   .ed-hero-name { font-family:var(--font); font-size:22px; font-style:italic; color:var(--charcoal); line-height:1.25; margin-bottom:0.3rem; z-index:1; }
   .ed-hero-cat { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--warm-gray); margin-bottom:0.8rem; z-index:1; }
   .ed-hero-rule { width:36px; height:1px; background:var(--gold); margin:0 auto 0.8rem; z-index:1; }
@@ -138,12 +160,18 @@
   .ed-wide-desc { font-size:11px; color:var(--warm-gray); line-height:1.5; }
   .ed-wide-price { font-family:var(--font); font-size:22px; font-style:italic; color:var(--gold-light); flex-shrink:0; }
   .ed-badge { position:absolute; top:10px; right:10px; background:var(--gold); color:var(--charcoal); font-size:8px; letter-spacing:1px; text-transform:uppercase; padding:3px 7px; border-radius:2px; font-weight:700; }
+  @media (max-width: 768px) {
+    .hs-section { overflow-x: auto; }
+    .bestsellers-track { overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+    .hs-progress-bar { display: none; }
+    .hs-scroll-hint { display: none; }
+  }
   @media(max-width:640px){ .editorial-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; } .ed-hero { grid-column:1/3; min-height:260px; } .ed-wide { grid-column:1/3; flex-direction:column; text-align:center; } .ed-wide-left { flex-direction:column; text-align:center; } }
 
   .product-card { background: var(--ivory); border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; cursor: pointer; transition: border-color 0.2s, transform 0.2s; position: relative; }
   .product-card:hover { border-color: var(--border-hover); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(201,169,110,0.15); }
-  .product-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 52px; position: relative; background: linear-gradient(145deg, var(--nude) 0%, var(--blush-light) 100%); }
-  .product-badge { position: absolute; top: 10px; left: 10px; background: var(--charcoal); color: var(--gold-light); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+  .product-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 52px; position: relative; background: linear-gradient(145deg, var(--nude) 0%, var(--blush-light) 100%); overflow: hidden; }
+  .product-badge { position: absolute; top: 10px; left: 10px; background: var(--ink); color: var(--gold-light); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
   .product-wish { position: absolute; top: 10px; right: 10px; width: 28px; height: 28px; border-radius: 50%; background: white; border: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 13px; transition: all 0.2s; }
   .product-wish:hover { border-color: var(--blush-deep); background: var(--blush-light); }
   .product-wish.active { background: var(--blush-light); border-color: var(--blush-deep); }
@@ -161,17 +189,13 @@
   .cat-card { border-radius: 8px; overflow: hidden; cursor: pointer; position: relative; height: 140px; display: flex; align-items: flex-end; padding: 1rem; transition: transform 0.2s; }
   .cat-card:hover { transform: scale(1.02); }
   .cat-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(44,37,32,0.55), transparent); z-index: 1; }
-  .cat-bg-1 { background: linear-gradient(135deg, #E8C4C0 0%, #C9908A 100%); }
-  .cat-bg-2 { background: linear-gradient(135deg, #F5EDE3 0%, #E8D5B0 100%); }
-  .cat-bg-3 { background: linear-gradient(135deg, #D4C5B5 0%, #B5A090 100%); }
-  .cat-bg-4 { background: linear-gradient(135deg, #C5D5C5 0%, #96B096 100%); }
-  .cat-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -70%); font-size: 36px; z-index: 0; opacity: 0.7; }
   .cat-name { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: white; font-weight: 500; z-index: 2; }
 
   .promo-banner { background: linear-gradient(135deg, var(--charcoal) 0%, #3D3028 100%); border-radius: 10px; padding: 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
   .promo-text h3 { font-family: var(--font); font-size: 26px; color: var(--gold-light); font-style: italic; margin-bottom: 0.4rem; }
   .promo-text p { font-size: 13px; color: var(--warm-gray); }
   .promo-code { background: rgba(201,169,110,0.15); border: 1px dashed var(--gold); border-radius: 4px; padding: 6px 14px; font-size: 14px; letter-spacing: 3px; color: var(--gold); font-weight: 600; }
+  .code-blurred { filter: blur(6px); user-select: none; pointer-events: none; }
 
   .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
   .testi-card { background: var(--ivory); border: 0.5px solid var(--border); border-radius: 8px; padding: 1.4rem; }
@@ -253,7 +277,7 @@
   .qty-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
   .qty-ctrl { display: flex; align-items: center; border: 0.5px solid var(--border); border-radius: 2px; }
   .qty-btn { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; color: var(--charcoal); border: none; background: transparent; transition: color 0.2s; }
-  .qty-btn:hover { color: var(--gold-deep); }
+  .qty-btn:hover { color: var(--gold-deep-text); }
   .qty-num { width: 38px; text-align: center; font-size: 14px; border: none; outline: none; background: transparent; color: var(--charcoal); }
   .detail-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
   .btn-cart { flex: 1; background: var(--charcoal); color: var(--cream); padding: 14px 20px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; border: none; cursor: pointer; border-radius: 2px; transition: background 0.2s; min-width: 140px; }
@@ -287,7 +311,7 @@
   .value-icon { font-size: 36px; margin-bottom: 1rem; }
   .value-title { font-family: var(--font); font-size: 18px; color: var(--charcoal); font-style: italic; margin-bottom: 0.5rem; }
   .value-desc { font-size: 13px; color: var(--warm-gray); line-height: 1.6; }
-  .about-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; background: var(--charcoal); border-radius: 10px; padding: 2rem; text-align: center; }
+  .about-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; background: var(--ink); border-radius: 10px; padding: 2rem; text-align: center; }
   .about-stat-num { font-family: var(--font); font-size: 36px; color: var(--gold); font-style: italic; }
   .about-stat-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--warm-gray); margin-top: 4px; }
   .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
@@ -303,13 +327,8 @@
   .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .blog-card { background: var(--ivory); border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; cursor: pointer; transition: border-color 0.2s, transform 0.2s; }
   .blog-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
-  .blog-img { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 48px; }
-  .blog-b1 { background: linear-gradient(135deg, var(--nude), var(--blush)); }
-  .blog-b2 { background: linear-gradient(135deg, var(--blush-light), var(--gold-light)); }
-  .blog-b3 { background: linear-gradient(135deg, var(--cream), var(--nude)); }
-  .blog-b4 { background: linear-gradient(135deg, var(--gold-light), var(--blush-light)); }
-  .blog-b5 { background: linear-gradient(135deg, var(--nude), var(--cream)); }
-  .blog-b6 { background: linear-gradient(135deg, var(--blush), var(--nude)); }
+  .blog-img { height: 160px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--cream); }
+  .blog-img img { width: 100%; height: 100%; object-fit: cover; }
   .blog-info { padding: 1.2rem; }
   .blog-tag { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
   .blog-title { font-size: 14px; font-weight: 600; color: var(--charcoal); line-height: 1.4; margin-bottom: 0.5rem; }
@@ -319,7 +338,7 @@
   /* FLOATING CONTACT BUTTON */
   .floating-contact-btn {
     position: fixed; bottom: 1.5rem; right: 1.5rem;
-    background: var(--charcoal); color: var(--gold-light);
+    background: var(--ink); color: var(--gold-light);
     padding: 13px 20px; border-radius: 28px;
     font-size: 12px; letter-spacing: 1px;
     display: flex; align-items: center; gap: 8px;
@@ -345,16 +364,16 @@
     overflow: hidden;
   }
   .contact-modal-header {
-    background: var(--charcoal); padding: 1.1rem 1.3rem;
+    background: var(--ink); padding: 1.1rem 1.3rem;
     display: flex; align-items: center; justify-content: space-between;
   }
-  .contact-modal-header h4 { font-family: var(--font); font-size: 16px; color: var(--gold-light); font-style: italic; }
+  .contact-modal-header h4 { font-family:var(--font); font-size: 16px; color: var(--gold-light); font-style: italic; }
   .contact-modal-close { width: 28px; height: 28px; border-radius: 50%; border: 0.5px solid rgba(201,169,110,0.3); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 14px; color: var(--gold-light); background: transparent; transition: all 0.2s; }
   .contact-modal-close:hover { border-color: var(--gold); background: rgba(201,169,110,0.15); }
   .contact-modal-body { padding: 1.3rem; }
   .contact-tabs { display: flex; gap: 6px; margin-bottom: 1.2rem; }
   .contact-tab { flex: 1; padding: 7px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; text-align: center; border: 0.5px solid var(--border); border-radius: 2px; cursor: pointer; color: var(--warm-gray); transition: all 0.2s; background: transparent; font-family: var(--sans); }
-  .contact-tab.active { background: var(--charcoal); color: var(--gold-light); border-color: var(--charcoal); }
+  .contact-tab.active { background: var(--ink); color: var(--gold-light); border-color: var(--ink); }
   .contact-panel { display: none; }
   .contact-panel.active { display: block; }
   .cform-group { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
@@ -412,8 +431,8 @@
   .checkout-modal h3 { font-family: var(--font); font-size: 22px; color: var(--charcoal); font-style: italic; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 0.5px solid var(--border); }
   .checkout-steps { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
   .checkout-step { flex: 1; text-align: center; padding: 8px; border-radius: 4px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
-  .checkout-step.active { background: var(--charcoal); color: var(--gold-light); }
-  .checkout-step.done { background: var(--nude); color: var(--gold-deep); }
+  .checkout-step.active { background: var(--ink); color: var(--gold-light); }
+  .checkout-step.done { background: var(--nude); color: var(--gold-deep-text); }
   .checkout-step.pending { background: var(--cream); color: var(--warm-gray); }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
   .form-group { display: flex; flex-direction: column; gap: 5px; }
@@ -427,7 +446,7 @@
   .success-screen h4 { font-family: var(--font); font-size: 22px; color: var(--charcoal); font-style: italic; margin-bottom: 0.5rem; }
   .success-screen p { font-size: 13px; color: var(--warm-gray); line-height: 1.6; }
 
-  .toast { position: fixed; bottom: 7rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--charcoal); color: var(--gold-light); padding: 10px 20px; border-radius: 20px; font-size: 12px; letter-spacing: 1px; opacity: 0; transition: all 0.3s; z-index: 500; pointer-events: none; }
+  .toast { position: fixed; bottom: 7rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--ink); color: var(--gold-light); padding: 10px 20px; border-radius: 20px; font-size: 12px; letter-spacing: 1px; opacity: 0; transition: all 0.3s; z-index: 500; pointer-events: none; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
   /* ── BESTSELLERS HORIZONTAL SCROLL ── */
@@ -437,11 +456,9 @@
   .bestsellers-track {
     display: flex;
     gap: 1rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
+    overflow-x: visible;
     padding: 0.5rem 0.25rem 1.2rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    will-change: transform;
   }
   .bestsellers-track::-webkit-scrollbar { display: none; }
   .bestsellers-track .bs-card {
@@ -469,7 +486,7 @@
   }
   .bs-badge {
     position: absolute; top: 8px; left: 8px;
-    background: var(--charcoal); color: var(--gold-light);
+    background: var(--ink); color: var(--gold-light);
     font-size: 8px; letter-spacing: 1px; text-transform: uppercase;
     padding: 3px 7px; border-radius: 2px;
   }
@@ -633,12 +650,164 @@
     .ed-sm { grid-column: auto; }
     .ed-wide { grid-column: auto; }
   }
+
+  /* ── DARK MODE ── */
+  [data-theme="dark"] {
+    --ivory: #181411;
+    --cream: #1F1B18;
+    --nude: #262018;
+    --blush: #3A2B28;
+    --blush-light: #2C2218;
+    --charcoal: #EDE4DB;
+    --warm-gray: #9A8D85;
+    --gold-deep-text: #D9B679;
+    --border: rgba(201,169,110,0.18);
+    --border-hover: rgba(201,169,110,0.4);
+  }
+  [data-theme="dark"] body { background: var(--ivory); color: var(--charcoal); }
+  [data-theme="dark"] nav { background: var(--ivory); border-bottom-color: var(--border); }
+  [data-theme="dark"] .marquee-bar { background: #0E0C0A; }
+  [data-theme="dark"] footer { background: #0E0C0A; }
+  [data-theme="dark"] .footer-logo { color: var(--gold-light); }
+  [data-theme="dark"] .btn-primary { background: var(--gold-deep); color: #fff; }
+  [data-theme="dark"] .btn-primary:hover { background: #7A5C2A; }
+  [data-theme="dark"] .btn-outline { color: var(--charcoal); border-color: rgba(237,228,219,0.4); }
+  [data-theme="dark"] .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  [data-theme="dark"] .product-card { background: var(--cream); border-color: var(--border); }
+  [data-theme="dark"] .product-add { background: var(--gold-deep); }
+  [data-theme="dark"] .product-add:hover { background: #7A5C2A; }
+  [data-theme="dark"] .testi-card { background: var(--cream); }
+  [data-theme="dark"] .floater-card { background: var(--cream); border-color: var(--border); }
+  [data-theme="dark"] .ed-sm { background: var(--cream); border-color: var(--border); }
+  [data-theme="dark"] .ed-hero { background: linear-gradient(155deg, #262018 0%, #3A2B28 60%, #2C2218 100%); }
+  [data-theme="dark"] .ed-hero-btn { background: var(--gold-deep); }
+  [data-theme="dark"] .ed-wide { background: #0E0C0A; }
+  [data-theme="dark"] .promo-banner { background: linear-gradient(135deg, #0E0C0A, #1F1814); }
+  [data-theme="dark"] .newsletter { background: linear-gradient(135deg, #262018, #2C2218); }
+  [data-theme="dark"] .cat-card { filter: brightness(0.8); }
+  [data-theme="dark"] .filter-title { color: var(--gold); }
+  [data-theme="dark"] .filter-group-title { color: var(--charcoal); }
+  [data-theme="dark"] .filter-option label { color: var(--warm-gray); }
+  [data-theme="dark"] .sort-select { background: var(--cream); color: var(--charcoal); border-color: var(--border); }
+  [data-theme="dark"] .account-modal { background: var(--cream); }
+  [data-theme="dark"] .account-modal-header { background: var(--ivory); }
+  [data-theme="dark"] .aform-group input { background: var(--ivory); color: var(--charcoal); border-color: var(--border); }
+  [data-theme="dark"] .checkout-modal { background: var(--cream); color: var(--charcoal); }
+  [data-theme="dark"] .checkout-modal h3 { color: var(--charcoal); }
+  [data-theme="dark"] .form-group input,
+  [data-theme="dark"] .form-group select,
+  [data-theme="dark"] .form-group textarea { background: var(--ivory); color: var(--charcoal); border-color: var(--border); }
+  [data-theme="dark"] .search-box { background: var(--cream); }
+  [data-theme="dark"] #search-input { background: var(--ivory); color: var(--charcoal); border-color: var(--border); }
+  [data-theme="dark"] .cart-panel { background: var(--cream); }
+  [data-theme="dark"] .cart-header { background: var(--ivory); color: var(--charcoal); }
+  [data-theme="dark"] .cart-header h3 { color: var(--charcoal); }
+  [data-theme="dark"] .cart-item { border-color: var(--border); }
+  [data-theme="dark"] .cart-item-img { background: var(--nude); }
+  [data-theme="dark"] .cart-footer { border-color: var(--border); background: var(--ivory); }
+  [data-theme="dark"] .btn-checkout { background: var(--gold-deep); color: #fff; }
+  [data-theme="dark"] .contact-modal { background: var(--cream); }
+  [data-theme="dark"] .cform-group input,
+  [data-theme="dark"] .cform-group select,
+  [data-theme="dark"] .cform-group textarea { background: var(--ivory); color: var(--charcoal); border-color: var(--border); }
+  [data-theme="dark"] .newsletter-form input { background: var(--ivory); color: var(--charcoal); border-color: var(--border); }
+  [data-theme="dark"] .review-card { background: var(--cream); border-color: var(--border); }
+  [data-theme="dark"] .detail-thumb { background: var(--cream); border-color: var(--border); }
+  [data-theme="dark"] .detail-main-img { background: linear-gradient(145deg, var(--nude), var(--blush)); border-color: var(--border); }
+  [data-theme="dark"] .detail-feat { background: var(--cream); border-color: var(--border); }
+  [data-theme="dark"] .qty-ctrl { background: var(--cream); border-color: var(--border); }
+  [data-theme="dark"] .btn-cart { background: var(--gold-deep); color: #fff; }
+  [data-theme="dark"] .btn-cart:hover { background: #7A5C2A; }
+  [data-theme="dark"] .bs-card { background: var(--cream); border-color: var(--border); }
+  [data-theme="dark"] .bs-img { background: linear-gradient(145deg, var(--nude), var(--blush)); }
+  [data-theme="dark"] .about-stat-num { color: var(--gold); }
+  [data-theme="dark"] .value-card { background: var(--cream); border-color: var(--border); }
+  [data-theme="dark"] .team-card { background: var(--cream); border-color: var(--border); }
+  [data-theme="dark"] .blog-card { background: var(--cream); border-color: var(--border); }
+  [data-theme="dark"] .nav-icon { border-color: var(--border); color: var(--warm-gray); }
+  [data-theme="dark"] .nav-icon:hover { border-color: var(--gold); color: var(--gold); }
+  [data-theme="dark"] .nav-logo { color: var(--charcoal); }
+  [data-theme="dark"] .nav-links a { color: var(--warm-gray); }
+  [data-theme="dark"] .nav-links a:hover,
+  [data-theme="dark"] .nav-links a.active { color: var(--charcoal); }
+  [data-theme="dark"] .nav-hamburger span { background: var(--charcoal); }
+  [data-theme="dark"] .scroll-btn { background: var(--cream); border-color: var(--border); }
+  [data-theme="dark"] .hero { background: var(--nude); }
+  [data-theme="dark"] .section-alt { background: var(--cream); }
+  [data-theme="dark"] .shop-layout > div:first-child { background: var(--cream); border-color: var(--border); }
+  [data-theme="dark"] .shop-toolbar { border-color: var(--border); }
+  [data-theme="dark"] .product-img { background: linear-gradient(145deg, var(--nude), var(--blush)) !important; }
+  [data-theme="dark"] .product-img img { opacity: 0.92; }
+  [data-theme="dark"] .trust-bar { background: transparent; }
+
+
+
+  /* ── HORIZONTAL SCROLL SECTION ── */
+  .hs-section {
+    position: relative;
+    overflow: hidden;
+  }
+  .hs-wrapper {
+    display: flex;
+    gap: 1rem;
+    will-change: transform;
+  }
+  .hs-card {
+    flex-shrink: 0;
+    width: 280px;
+  }
+  .hs-progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .hs-progress-bar.visible {
+    opacity: 1;
+  }
+  .hs-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-deep));
+    border-radius: 2px;
+    transition: width 0.1s linear;
+  }
+  .hs-scroll-hint {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .hs-scroll-hint.visible {
+    opacity: 1;
+  }
+  .hs-section-spacer {
+    height: 100vh;
+  }
+
+  /* Reduce motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .hs-wrapper { transform: none !important; }
+    .hs-progress-bar { display: none; }
+  }
+
 </style>
 
-<h2 class="sr-only">Bloom & Gloom Beauty — Luxury Cosmetics eCommerce Website</h2>
+<h2 class="sr-only">Beauty & Bold — Luxury Cosmetics eCommerce Website</h2>
 
 <nav>
-  <span class="nav-logo">Bloom <span>&</span> Gloom</span>
+  <span class="nav-logo">Beauty <span>&</span> Bold</span>
   <div class="nav-links">
     <a onclick="showPage('home')" class="active" id="nav-home">Home</a>
     <a onclick="showPage('shop')" id="nav-shop">Shop</a>
@@ -647,7 +816,9 @@
     <a onclick="showPage('blog')" id="nav-blog">Journal</a>
   </div>
   <div class="nav-actions">
+    <div class="nav-icon" onclick="toggleDarkMode()" title="Toggle dark mode" aria-label="Toggle dark mode" id="dark-toggle"><i class="ti ti-moon" aria-hidden="true"></i></div>
     <div class="nav-icon" onclick="toggleSearch()" title="Search" aria-label="Search"><i class="ti ti-search" aria-hidden="true"></i></div>
+    <div class="nav-icon" onclick="toggleWishlistDrawer()" title="Wishlist" aria-label="Wishlist" id="wishlist-icon"><i class="ti ti-heart" aria-hidden="true"></i></div>
     <div class="nav-icon" onclick="toggleAccount()" title="Account" aria-label="Account" id="account-icon"><i class="ti ti-user" aria-hidden="true"></i></div>
     <div class="nav-icon nav-cart" onclick="toggleCart()" title="Cart" aria-label="Open cart">
       <i class="ti ti-shopping-bag" aria-hidden="true"></i>
@@ -664,7 +835,7 @@
   <div class="hero">
     <canvas id="hero-canvas" aria-hidden="true"></canvas>
     <div class="hero-content">
-      <p class="hero-tag">✦ New Collection 2026</p>
+      <p class="hero-tag">New Collection 2026</p>
       <h1 class="hero-title">Beauty Elevated to <span>Pure Art</span></h1>
       <p class="hero-sub">Discover our curated collection of luxury skincare and cosmetics, crafted with the finest ingredients for a radiant, luminous glow.</p>
       <div class="hero-btns">
@@ -673,50 +844,54 @@
       </div>
     </div>
     <div class="hero-floaters">
-      <div class="floater-card"><div class="floater-icon">🌹</div><div class="floater-val">98%</div><div class="floater-label">Natural</div></div>
-      <div class="floater-card" style="margin-top:2rem"><div class="floater-icon">✨</div><div class="floater-val">50K+</div><div class="floater-label">Reviews</div></div>
-      <div class="floater-card"><div class="floater-icon">🏆</div><div class="floater-val">#1</div><div class="floater-label">Rated</div></div>
+      <div class="floater-card"><div class="floater-icon"><i class="ti ti-leaf" style="color:var(--gold)"></i></div><div class="floater-val">98%</div><div class="floater-label">Natural</div></div>
+      <div class="floater-card" style="margin-top:2rem"><div class="floater-icon"><i class="ti ti-star" style="color:var(--gold)"></i></div><div class="floater-val">1.6K+</div><div class="floater-label">Reviews</div></div>
+      <div class="floater-card"><div class="floater-icon"><i class="ti ti-award" style="color:var(--gold)"></i></div><div class="floater-val">#1</div><div class="floater-label">Rated</div></div>
     </div>
   </div>
 
   <div class="marquee-bar">
     <div class="marquee-track">
-      <span>Free delivery over KES 5,000</span><span class="dot">✦</span>
-      <span>Cruelty-free & vegan</span><span class="dot">✦</span>
-      <span>Award-winning formulas</span><span class="dot">✦</span>
-      <span>Dermatologist tested</span><span class="dot">✦</span>
-      <span>30-day returns</span><span class="dot">✦</span>
-      <span>Free delivery over KES 5,000</span><span class="dot">✦</span>
-      <span>Cruelty-free & vegan</span><span class="dot">✦</span>
-      <span>Award-winning formulas</span><span class="dot">✦</span>
-      <span>Dermatologist tested</span><span class="dot">✦</span>
-      <span>30-day returns</span><span class="dot">✦</span>
+      <span>Free delivery over KES 5,000</span><span class="dot">·</span>
+      <span>Cruelty-free & vegan</span><span class="dot">·</span>
+      <span>Award-winning formulas</span><span class="dot">·</span>
+      <span>Dermatologist tested</span><span class="dot">·</span>
+      <span>30-day returns</span><span class="dot">·</span>
+      <span>Free delivery over KES 5,000</span><span class="dot">·</span>
+      <span>Cruelty-free & vegan</span><span class="dot">·</span>
+      <span>Award-winning formulas</span><span class="dot">·</span>
+      <span>Dermatologist tested</span><span class="dot">·</span>
+      <span>30-day returns</span><span class="dot">·</span>
     </div>
   </div>
 
   <div class="section">
     <div class="section-header">
-      <p class="section-tag">✦ Shop by Category</p>
+      <p class="section-tag">Shop by Category</p>
       <h2 class="section-title">Discover Your Perfect Ritual</h2>
     </div>
     <div class="categories-grid">
-      <div class="cat-card cat-bg-1" onclick="showPage('shop')"><span class="cat-icon">💄</span><span class="cat-name">Face Makeup</span></div>
-      <div class="cat-card cat-bg-2" onclick="showPage('shop')"><span class="cat-icon">👁</span><span class="cat-name">Eye Makeup</span></div>
-      <div class="cat-card cat-bg-3" onclick="showPage('shop')"><span class="cat-icon">💋</span><span class="cat-name">Lips & Cheeks</span></div>
-      <div class="cat-card cat-bg-4" onclick="showPage('shop')"><span class="cat-icon">🖌️</span><span class="cat-name">Tools & Accessories</span></div>
+      <div class="cat-card" onclick="shopCategory('face')" style="background: url('https://www.cultbeauty.com/images?url=https://blogscdn.thehut.net/app/uploads/sites/1778/2025/09/triffy-blog-4_1756803343.jpg&auto=avif&width=600&fit=crop') center/cover no-repeat;"><span class="cat-name">Face Makeup</span></div>
+      <div class="cat-card" onclick="shopCategory('eye')" style="background: url('https://artdeco.com/cdn/shop/collections/Category-Image_600x400_Augen.jpg?v=1742911300&width=1024') center/cover no-repeat;"><span class="cat-name">Eye Makeup</span></div>
+      <div class="cat-card" onclick="shopCategory('lips')" style="background: url('https://aptmedicalaesthetics.com/wp-content/uploads/2019/10/Cheek-and-Lip-Enhancement-Thmp-364x330.jpg') center/cover no-repeat;"><span class="cat-name">Lips & Cheeks</span></div>
+      <div class="cat-card" onclick="shopCategory('tools')" style="background: url('https://static.wixstatic.com/media/681664_98c01b426dbe4904b291a52a57dde249~mv2.jpeg/v1/fill/w_740,h_416,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/681664_98c01b426dbe4904b291a52a57dde249~mv2.jpeg') center/cover no-repeat;"><span class="cat-name">Tools & Accessories</span></div>
     </div>
   </div>
 
-  <div class="section-alt">
+  <div class="section-alt hs-section">
     <div class="section-header">
-      <p class="section-tag">✦ Featured Picks</p>
+      <p class="section-tag">Featured Picks</p>
       <h2 class="section-title">Bestselling Beauties</h2>
       <p class="section-sub">Adored by thousands, perfected for you</p>
     </div>
+    <p class="hs-scroll-hint">Scroll to explore →</p>
     <div class="bestsellers-scroll-wrapper">
       <button class="scroll-btn scroll-btn-left" onclick="scrollBestsellers(-1)" aria-label="Scroll left">&#8249;</button>
       <div class="bestsellers-track" id="home-editorial"></div>
       <button class="scroll-btn scroll-btn-right" onclick="scrollBestsellers(1)" aria-label="Scroll right">&#8250;</button>
+    </div>
+    <div class="hs-progress-bar">
+      <div class="hs-progress-fill"></div>
     </div>
     <div style="text-align:center;margin-top:2rem">
       <button class="btn-outline" onclick="showPage('shop')" style="padding:13px 36px;letter-spacing:2px">View All Products</button>
@@ -726,22 +901,22 @@
   <div class="section">
     <div class="promo-banner">
       <div class="promo-text">
-        <h3>Summer Glow Event — Up to 30% Off</h3>
-        <p>Limited time. Complimentary gift wrapping on all orders over KES 8,000.</p>
+        <h3>Universal Offer — Up to 30% Off</h3>
+        <p>For all orders above KES 10,500 where you get up to 30% discount. This offer is only available twice per month.</p>
       </div>
       <div>
         <div style="font-size:11px;letter-spacing:1px;color:var(--warm-gray);margin-bottom:6px;text-align:center">USE CODE</div>
-        <div class="promo-code">BLOOM30</div>
+        <div class="promo-code code-blurred" id="code-universal">UNIVERSAL30</div>
       </div>
-      <button class="btn-primary" onclick="showPage('shop')">Shop the Sale</button>
+      <button class="btn-primary" onclick="showPage('shop')">Shop Now</button>
     </div>
   </div>
 
   <div class="section">
     <div class="trust-bar">
-      <div class="trust-item"><div class="trust-icon">🌿</div><p class="trust-title">100% Cruelty-Free</p><p class="trust-desc">Certified by Leaping Bunny. No animal testing, ever.</p></div>
-      <div class="trust-item"><div class="trust-icon">🔬</div><p class="trust-title">Dermatologist Tested</p><p class="trust-desc">Every formula reviewed by board-certified dermatologists.</p></div>
-      <div class="trust-item"><div class="trust-icon">♻️</div><p class="trust-title">Sustainable Packaging</p><p class="trust-desc">Recyclable materials and carbon-offset shipping.</p></div>
+      <div class="trust-item"><div class="trust-icon"><i class="ti ti-leaf" style="color:var(--gold)"></i></div><p class="trust-title">100% Cruelty-Free</p><p class="trust-desc">Certified by Leaping Bunny. No animal testing, ever.</p></div>
+      <div class="trust-item"><div class="trust-icon"><i class="ti ti-flask" style="color:var(--gold)"></i></div><p class="trust-title">Dermatologist Tested</p><p class="trust-desc">Every formula reviewed by board-certified dermatologists.</p></div>
+      <div class="trust-item"><div class="trust-icon"><i class="ti ti-recycle" style="color:var(--gold)"></i></div><p class="trust-title">Sustainable Packaging</p><p class="trust-desc">Recyclable materials and carbon-offset shipping.</p></div>
     </div>
   </div>
 
@@ -751,7 +926,7 @@
       <p>Be first to discover new launches, exclusive offers, and beauty secrets from our experts.</p>
       <div class="newsletter-form">
         <input type="email" placeholder="Your email address" />
-        <button class="btn-primary" onclick="showToast('Welcome to the Inner Circle! ✨')">Subscribe</button>
+        <button class="btn-primary" onclick="showToast('Welcome to the Inner Circle!')">Subscribe</button>
       </div>
     </div>
   </div>
@@ -765,45 +940,125 @@
   </div>
   <div class="shop-layout">
     <div>
-      <p class="filter-title">✦ Refine</p>
+      <p class="filter-title">Refine</p>
       <div class="filter-group">
         <p class="filter-group-title">Category</p>
-        <div class="filter-option"><input type="checkbox" id="f1" checked><label for="f1">Foundations</label></div>
-        <div class="filter-option"><input type="checkbox" id="f2" checked><label for="f2">Concealers</label></div>
-        <div class="filter-option"><input type="checkbox" id="f3"><label for="f3">Eye Makeup</label></div>
-        <div class="filter-option"><input type="checkbox" id="f4"><label for="f4">Lip</label></div>
-        <div class="filter-option"><input type="checkbox" id="f5"><label for="f5">Setting Spray</label></div>
-        <div class="filter-option"><input type="checkbox" id="f6"><label for="f6">Brushes & Blenders</label></div>
+        <div class="filter-option"><input type="radio" name="shop-cat-sidebar" id="scat-all" value="all" checked onchange="selectShopCategory('all')"><label for="scat-all">All Products</label></div>
+        <div class="filter-option"><input type="radio" name="shop-cat-sidebar" id="scat-f1" value="Foundations" onchange="selectShopCategory('Foundations')"><label for="scat-f1">Foundations</label></div>
+        <div class="filter-option"><input type="radio" name="shop-cat-sidebar" id="scat-f2" value="Concealers" onchange="selectShopCategory('Concealers')"><label for="scat-f2">Concealers</label></div>
+        <div class="filter-option"><input type="radio" name="shop-cat-sidebar" id="scat-f3" value="Eye" onchange="selectShopCategory('Eye')"><label for="scat-f3">Eye Makeup</label></div>
+        <div class="filter-option"><input type="radio" name="shop-cat-sidebar" id="scat-f4" value="Lip" onchange="selectShopCategory('Lip')"><label for="scat-f4">Lip</label></div>
+        <div class="filter-option"><input type="radio" name="shop-cat-sidebar" id="scat-f5" value="Setting Spray" onchange="selectShopCategory('Setting Spray')"><label for="scat-f5">Setting Spray</label></div>
+        <div class="filter-option"><input type="radio" name="shop-cat-sidebar" id="scat-f6" value="Tools" onchange="selectShopCategory('Tools')"><label for="scat-f6">Brushes & Blenders</label></div>
+        <div class="filter-option"><input type="radio" name="shop-cat-sidebar" id="scat-f7" value="Moisturizers" onchange="selectShopCategory('Moisturizers')"><label for="scat-f7">Moisturizers & Primer</label></div>
+        <div class="filter-option"><input type="radio" name="shop-cat-sidebar" id="scat-f8" value="Powders" onchange="selectShopCategory('Powders')"><label for="scat-f8">Powders & Blush</label></div>
       </div>
       <div class="filter-group">
         <p class="filter-group-title">Price Range</p>
         <div class="price-range">
-          <input type="range" min="0" max="3000" value="1500" oninput="document.getElementById('price-val').textContent='KES '+parseInt(this.value).toLocaleString()">
-          <div class="price-labels"><span>KES 0</span><span id="price-val">KES 1,500</span></div>
+          <input type="range" min="0" max="3000" value="1500" id="price-slider" oninput="applyShopFilters()">
+          <div class="price-labels"><span>KES 0</span><span id="price-val">Up to KES 1,500</span></div>
         </div>
       </div>
       <div class="filter-group">
-        <p class="filter-group-title">Skin Type</p>
-        <div class="filter-option"><input type="checkbox" id="s1"><label for="s1">All Skin Types</label></div>
-        <div class="filter-option"><input type="checkbox" id="s2"><label for="s2">Dry</label></div>
-        <div class="filter-option"><input type="checkbox" id="s3"><label for="s3">Oily</label></div>
-        <div class="filter-option"><input type="checkbox" id="s4"><label for="s4">Combination</label></div>
-        <div class="filter-option"><input type="checkbox" id="s5"><label for="s5">Sensitive</label></div>
-      </div>
-      <div class="filter-group">
-        <p class="filter-group-title">Certifications</p>
-        <div class="filter-option"><input type="checkbox" id="c1" checked><label for="c1">Cruelty-Free</label></div>
-        <div class="filter-option"><input type="checkbox" id="c2"><label for="c2">Vegan</label></div>
-        <div class="filter-option"><input type="checkbox" id="c3"><label for="c3">Natural</label></div>
+        <p class="filter-group-title">Promo Code</p>
+        <div style="display:flex;gap:4px">
+          <input type="text" id="shop-promo-input" placeholder="Enter code" style="width:100%;padding:8px;border:0.5px solid var(--border);border-radius:2px;font-size:12px;outline:none">
+          <button class="btn-primary" style="padding:8px 12px;font-size:10px" onclick="applyShopPromo()">Apply</button>
+        </div>
       </div>
     </div>
     <div>
       <div class="shop-toolbar">
         <p class="shop-count">Showing <strong>24</strong> products</p>
-        <select class="sort-select"><option>Sort: Bestselling</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Newest First</option><option>Top Rated</option></select>
+        <select class="sort-select" onchange="applyShopFilters()"><option>Sort: Bestselling</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Newest First</option><option>Top Rated</option></select>
+      </div>
+      <div id="shop-active-filter-banner" style="display:none;margin-bottom:1rem;padding:10px 14px;background:var(--ink);color:var(--gold-light);border-radius:6px;align-items:center;justify-content:space-between;font-size:12px">
+        <span>Active Section: <strong id="shop-filter-name" style="color:white;letter-spacing:1px;margin-left:4px">Face Makeup</strong></span>
+        <span style="cursor:pointer;text-decoration:underline;color:var(--gold)" onclick="currentShopGroup=null;applyShopFilters()">View All Categories ✕</span>
       </div>
       <div class="shop-grid" id="shop-products"></div>
     </div>
+  </div>
+</div>
+
+<!-- PRODUCT DETAIL PAGE -->
+<div class="page" id="page-product">
+  <!-- Breadcrumb -->
+  <div style="padding:1rem 2rem;border-bottom:0.5px solid var(--border);background:var(--cream);display:flex;align-items:center;gap:0.6rem">
+    <span style="font-size:11px;color:var(--warm-gray);cursor:pointer;letter-spacing:1px;transition:color 0.2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--warm-gray)'" onclick="closeProductDetail()">← Back</span>
+    <span style="font-size:11px;color:var(--warm-gray)">/</span>
+    <span style="font-size:11px;color:var(--warm-gray);cursor:pointer;letter-spacing:1px" onclick="showPage('shop')">SHOP</span>
+    <span style="font-size:11px;color:var(--warm-gray)">/</span>
+    <span style="font-size:11px;color:var(--charcoal);letter-spacing:1px;font-weight:500" id="pd-breadcrumb">PRODUCT</span>
+  </div>
+
+  <div class="detail-layout">
+    <!-- Left: product image -->
+    <div>
+      <div class="detail-main-img" id="pd-main-img">
+        <span id="pd-emoji" style="font-size:48px;color:var(--warm-gray)"><i class="ti ti-photo"></i></span>
+      </div>
+      <div class="detail-thumbs" id="pd-thumbs"></div>
+    </div>
+
+    <!-- Right: product info -->
+    <div>
+      <p class="detail-brand" id="pd-category"></p>
+      <h1 class="detail-name" id="pd-name"></h1>
+
+      <div class="detail-stars" id="pd-stars"></div>
+
+      <div class="detail-price-row">
+        <span class="detail-price" id="pd-price"></span>
+        <span class="detail-old" id="pd-old"></span>
+        <span id="pd-save" style="display:none" class="detail-save"></span>
+      </div>
+
+      <p class="detail-desc" id="pd-desc"></p>
+
+      <!-- Stock availability -->
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:1.4rem;padding:10px 14px;border-radius:4px;background:var(--cream);border:0.5px solid var(--border)">
+        <span id="pd-stock-dot" style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:#4CAF50"></span>
+        <span id="pd-stock-text" style="font-size:12px;color:var(--warm-gray)"></span>
+      </div>
+
+      <!-- Quantity selector -->
+      <div class="qty-row">
+        <label style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--charcoal);font-weight:600">Quantity</label>
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="changePdQty(-1)">−</button>
+          <input class="qty-num" id="pd-qty" value="1" readonly>
+          <button class="qty-btn" onclick="changePdQty(1)">+</button>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="detail-actions">
+        <button class="btn-cart" onclick="addPdToCart()">Add to Beauty Bag</button>
+        <button class="btn-wish-detail" id="pd-wish-btn" onclick="togglePdWish()" title="Add to wishlist"></button>
+      </div>
+
+      <!-- Feature badges -->
+      <div class="detail-features">
+        <div class="detail-feat"><span><i class="ti ti-leaf"></i></span>100% Cruelty-Free</div>
+        <div class="detail-feat"><span><i class="ti ti-flask"></i></span>Dermatologist Tested</div>
+        <div class="detail-feat"><span><i class="ti ti-recycle"></i></span>Sustainable Packaging</div>
+        <div class="detail-feat"><span><i class="ti ti-truck"></i></span>Free Delivery Over KES 5,000</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Customer Reviews -->
+  <div class="reviews-section">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+      <div>
+        <p class="section-tag">Customer Reviews</p>
+        <h2 class="section-title" id="pd-review-headline"></h2>
+      </div>
+    </div>
+    <div class="review-summary" id="pd-review-summary"></div>
+    <div class="review-cards" id="pd-review-cards"></div>
   </div>
 </div>
 
@@ -814,7 +1069,7 @@
       <p style="font-size:11px;color:var(--warm-gray);letter-spacing:1px">HOME / OFFERS</p>
       <h1 style="font-family:var(--font);font-size:28px;color:var(--charcoal);font-style:italic;margin-top:4px">Exclusive Offers & Deals</h1>
     </div>
-    <div style="display:flex;align-items:center;gap:8px;background:var(--charcoal);color:var(--gold-light);padding:8px 16px;border-radius:20px;font-size:11px;letter-spacing:1px">
+    <div style="display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--gold-light);padding:8px 16px;border-radius:20px;font-size:11px;letter-spacing:1px">
       <span style="width:8px;height:8px;border-radius:50%;background:#4CAF50;display:inline-block"></span>
       UPDATED TWICE WEEKLY — NEXT DROP: THURSDAY
     </div>
@@ -823,34 +1078,34 @@
   <!-- REDEEMABLE CODES -->
   <div class="section">
     <div class="section-header">
-      <p class="section-tag">✦ Redeemable Codes</p>
+      <p class="section-tag">Redeemable Codes</p>
       <h2 class="section-title">This Week's Active Codes</h2>
       <p class="section-sub">Copy a code and apply it at checkout — limited redemptions available</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem">
-      <div style="background:var(--charcoal);border-radius:8px;padding:1.4rem;text-align:center">
-        <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--warm-gray);margin-bottom:0.5rem">New Customer</p>
-        <div class="promo-code" style="font-size:18px;letter-spacing:4px;margin:0.5rem 0">NEWBIE15</div>
-        <p style="font-size:12px;color:var(--gold-light);margin-top:0.5rem">15% off your first order</p>
-        <button class="btn-outline" style="margin-top:1rem;padding:8px 18px;font-size:10px;border-color:var(--gold);color:var(--gold)" onclick="navigator.clipboard&&navigator.clipboard.writeText('NEWBIE15');showToast('Code NEWBIE15 copied! 🎉')">Copy Code</button>
+      <div style="background:var(--ink);border-radius:8px;padding:1.4rem;text-align:center">
+        <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--warm-gray);margin-bottom:0.5rem">Sign-In Milestone</p>
+        <div class="promo-code code-blurred" id="code-newbie" style="font-size:18px;letter-spacing:4px;margin:0.5rem 0">NEWBIE15</div>
+        <p style="font-size:12px;color:var(--gold-light);margin-top:0.5rem" id="desc-newbie">15% discount on your 1st and 15th sign-in</p>
+        <button class="btn-outline" id="btn-newbie" style="margin-top:1rem;padding:8px 18px;font-size:10px;border-color:var(--gold);color:var(--gold);opacity:0.5" onclick="copyCode('NEWBIE15', 'btn-newbie')">Copy Code</button>
       </div>
-      <div style="background:var(--charcoal);border-radius:8px;padding:1.4rem;text-align:center">
-        <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--warm-gray);margin-bottom:0.5rem">Weekend Flash</p>
-        <div class="promo-code" style="font-size:18px;letter-spacing:4px;margin:0.5rem 0">GLOW20</div>
-        <p style="font-size:12px;color:var(--gold-light);margin-top:0.5rem">20% off orders over KES 2,000</p>
-        <button class="btn-outline" style="margin-top:1rem;padding:8px 18px;font-size:10px;border-color:var(--gold);color:var(--gold)" onclick="navigator.clipboard&&navigator.clipboard.writeText('GLOW20');showToast('Code GLOW20 copied! 🎉')">Copy Code</button>
+      <div style="background:var(--ink);border-radius:8px;padding:1.4rem;text-align:center">
+        <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--warm-gray);margin-bottom:0.5rem">Big Spender Reward</p>
+        <div class="promo-code code-blurred" id="code-glow" style="font-size:18px;letter-spacing:4px;margin:0.5rem 0">GLOW20</div>
+        <p style="font-size:12px;color:var(--gold-light);margin-top:0.5rem" id="desc-glow">20% discount on next 3 purchases after KES 5,000+ purchase</p>
+        <button class="btn-outline" id="btn-glow" style="margin-top:1rem;padding:8px 18px;font-size:10px;border-color:var(--gold);color:var(--gold);opacity:0.5" onclick="copyCode('GLOW20', 'btn-glow')">Copy Code</button>
       </div>
-      <div style="background:var(--charcoal);border-radius:8px;padding:1.4rem;text-align:center">
-        <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--warm-gray);margin-bottom:0.5rem">Loyalty Reward</p>
-        <div class="promo-code" style="font-size:18px;letter-spacing:4px;margin:0.5rem 0">BLOOM10</div>
-        <p style="font-size:12px;color:var(--gold-light);margin-top:0.5rem">10% off sitewide, always</p>
-        <button class="btn-outline" style="margin-top:1rem;padding:8px 18px;font-size:10px;border-color:var(--gold);color:var(--gold)" onclick="navigator.clipboard&&navigator.clipboard.writeText('BLOOM10');showToast('Code BLOOM10 copied! 🎉')">Copy Code</button>
+      <div style="background:var(--ink);border-radius:8px;padding:1.4rem;text-align:center">
+        <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--warm-gray);margin-bottom:0.5rem">Loyalty Milestone</p>
+        <div class="promo-code code-blurred" id="code-bloom" style="font-size:18px;letter-spacing:4px;margin:0.5rem 0">BLOOM10</div>
+        <p style="font-size:12px;color:var(--gold-light);margin-top:0.5rem" id="desc-bloom">10% discount after your 10th store purchase</p>
+        <button class="btn-outline" id="btn-bloom" style="margin-top:1rem;padding:8px 18px;font-size:10px;border-color:var(--gold);color:var(--gold);opacity:0.5" onclick="copyCode('BLOOM10', 'btn-bloom')">Copy Code</button>
       </div>
-      <div style="background:var(--charcoal);border-radius:8px;padding:1.4rem;text-align:center">
+      <div style="background:var(--ink);border-radius:8px;padding:1.4rem;text-align:center">
         <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--warm-gray);margin-bottom:0.5rem">Free Delivery</p>
-        <div class="promo-code" style="font-size:18px;letter-spacing:4px;margin:0.5rem 0">FREERIDE</div>
-        <p style="font-size:12px;color:var(--gold-light);margin-top:0.5rem">Free delivery on any order</p>
-        <button class="btn-outline" style="margin-top:1rem;padding:8px 18px;font-size:10px;border-color:var(--gold);color:var(--gold)" onclick="navigator.clipboard&&navigator.clipboard.writeText('FREERIDE');showToast('Code FREERIDE copied! 🎉')">Copy Code</button>
+        <div class="promo-code code-blurred" id="code-freeride" style="font-size:18px;letter-spacing:4px;margin:0.5rem 0">FREERIDE</div>
+        <p style="font-size:12px;color:var(--gold-light);margin-top:0.5rem" id="desc-freeride">Reveals & activates for carts over KES 2,000</p>
+        <button class="btn-outline" id="btn-freeride" style="margin-top:1rem;padding:8px 18px;font-size:10px;border-color:var(--gold);color:var(--gold);opacity:0.5" onclick="copyCode('FREERIDE', 'btn-freeride')">Copy Code</button>
       </div>
     </div>
   </div>
@@ -858,68 +1113,68 @@
   <!-- PRODUCTS ON OFFER -->
   <div class="section-alt">
     <div class="section-header">
-      <p class="section-tag">✦ Flash Sale</p>
+      <p class="section-tag">Flash Sale</p>
       <h2 class="section-title">Products on Offer This Week</h2>
       <p class="section-sub">Discounted for a limited time — grab them before they're gone</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1.2rem">
       <div class="product-card">
-        <div class="product-img" style="background:linear-gradient(145deg,var(--nude),var(--blush-light))">
-          <span style="font-size:52px">💄</span>
+        <div class="product-img" style="padding:0;overflow:hidden">
+          <img src="https://ssbimages.ssbeauty.in/pub/media/catalog/product/images/206092797/206092797_206092797_14.jpg" alt="Maybelline Fit Me Foundation" style="width:100%;height:100%;object-fit:cover;display:block">
           <span class="product-badge" style="background:#C9908A">30% OFF</span>
         </div>
         <div class="product-info">
-          <p class="product-brand">Bloom & Gloom</p>
+          <p class="product-brand">Beauty & Bold</p>
           <p class="product-name">Maybelline Fit Me Foundation</p>
-          <p class="product-stars">★★★★★</p>
+          <p class="product-stars">★★★★☆</p>
           <div class="product-price-row">
             <div><span class="product-price">KES 840</span><span class="product-old">KES 1,200</span></div>
-            <button class="product-add" onclick="addToCart('Maybelline Fit Me Foundation','💄','KES 840')">+</button>
+            <button class="product-add" onclick="addToCart('Maybelline Fit Me Foundation','https://ssbimages.ssbeauty.in/pub/media/catalog/product/images/206092797/206092797_206092797_14.jpg','KES 840')">+</button>
           </div>
         </div>
       </div>
       <div class="product-card">
-        <div class="product-img" style="background:linear-gradient(145deg,var(--blush-light),var(--gold-light))">
-          <span style="font-size:52px">🖌️</span>
+        <div class="product-img" style="padding:0;overflow:hidden">
+          <img src="https://www.thebeautyworldstore.com/cdn/shop/files/BCA840FB-C629-4974-9618-B0FA5FC48799.jpg?v=1724530638&width=1445" alt="Zoeva 15pc Brush Set" style="width:100%;height:100%;object-fit:cover;display:block">
           <span class="product-badge" style="background:#C9908A">20% OFF</span>
         </div>
         <div class="product-info">
-          <p class="product-brand">Bloom & Gloom</p>
+          <p class="product-brand">Beauty & Bold</p>
           <p class="product-name">Zoeva 15pc Brush Set</p>
-          <p class="product-stars">★★★★★</p>
+          <p class="product-stars">★★★★☆</p>
           <div class="product-price-row">
             <div><span class="product-price">KES 2,000</span><span class="product-old">KES 2,500</span></div>
-            <button class="product-add" onclick="addToCart('Zoeva 15pc Brush Set','🖌️','KES 2,000')">+</button>
+            <button class="product-add" onclick="addToCart('Zoeva 15pc Brush Set','https://www.thebeautyworldstore.com/cdn/shop/files/BCA840FB-C629-4974-9618-B0FA5FC48799.jpg?v=1724530638&width=1445','KES 2,000')">+</button>
           </div>
         </div>
       </div>
       <div class="product-card">
-        <div class="product-img" style="background:linear-gradient(145deg,var(--nude),var(--cream))">
-          <span style="font-size:52px">✨</span>
+        <div class="product-img" style="padding:0;overflow:hidden">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqgF_EtiYcAnZxo2xH5BbzVnLLG-z2hx5AMQ&s" alt="Blossom African Queen Palette" style="width:100%;height:100%;object-fit:cover;display:block">
           <span class="product-badge" style="background:#C9908A">25% OFF</span>
         </div>
         <div class="product-info">
-          <p class="product-brand">Bloom & Gloom</p>
+          <p class="product-brand">Beauty & Bold</p>
           <p class="product-name">Blossom African Queen Palette</p>
-          <p class="product-stars">★★★★★</p>
+          <p class="product-stars">★★★★☆</p>
           <div class="product-price-row">
             <div><span class="product-price">KES 713</span><span class="product-old">KES 950</span></div>
-            <button class="product-add" onclick="addToCart('Blossom African Queen Palette','✨','KES 713')">+</button>
+            <button class="product-add" onclick="addToCart('Blossom African Queen Palette','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqgF_EtiYcAnZxo2xH5BbzVnLLG-z2hx5AMQ&s','KES 713')">+</button>
           </div>
         </div>
       </div>
       <div class="product-card">
-        <div class="product-img" style="background:linear-gradient(145deg,var(--blush-light),var(--nude))">
-          <span style="font-size:52px">💨</span>
+        <div class="product-img" style="padding:0;overflow:hidden">
+          <img src="https://roarbeautystore.com/wp-content/uploads/2024/12/Sooo-Pro-Seal-It-Waterproof-Locking-Mist-150ml.jpg.webp" alt="Soo Pro Seal It 150ml" style="width:100%;height:100%;object-fit:cover;display:block">
           <span class="product-badge" style="background:#C9908A">15% OFF</span>
         </div>
         <div class="product-info">
-          <p class="product-brand">Bloom & Gloom</p>
+          <p class="product-brand">Beauty & Bold</p>
           <p class="product-name">Soo Pro Seal It 150ml</p>
-          <p class="product-stars">★★★★★</p>
+          <p class="product-stars">★★★★☆</p>
           <div class="product-price-row">
             <div><span class="product-price">KES 1,190</span><span class="product-old">KES 1,400</span></div>
-            <button class="product-add" onclick="addToCart('Soo Pro Seal It 150ml','💨','KES 1,190')">+</button>
+            <button class="product-add" onclick="addToCart('Soo Pro Seal It 150ml','https://roarbeautystore.com/wp-content/uploads/2024/12/Sooo-Pro-Seal-It-Waterproof-Locking-Mist-150ml.jpg.webp','KES 1,190')">+</button>
           </div>
         </div>
       </div>
@@ -929,35 +1184,35 @@
   <!-- GIFT CARDS -->
   <div class="section">
     <div class="section-header">
-      <p class="section-tag">✦ Gift Cards</p>
+      <p class="section-tag">Gift Cards</p>
       <h2 class="section-title">Give the Gift of Glam</h2>
       <p class="section-sub">Delivered instantly via email — redeemable on anything in store</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem">
       <div style="background:linear-gradient(135deg,var(--nude),var(--blush-light));border:0.5px solid var(--border);border-radius:10px;padding:1.8rem 1.2rem;text-align:center;cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
-        <div style="font-size:36px;margin-bottom:0.6rem">🎁</div>
+        <div style="width:64px;height:64px;border-radius:8px;overflow:hidden;margin:0 auto 0.6rem"><img src="https://images.unsplash.com/photo-1668463919545-73f4bb38e1d3?w=200&h=200&fit=crop&auto=format" alt="Gift Card" style="width:100%;height:100%;object-fit:cover"></div>
         <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem">Starter</p>
         <p style="font-family:var(--font);font-size:26px;color:var(--charcoal);font-style:italic">KES 500</p>
-        <button class="btn-primary" style="margin-top:1rem;padding:10px 20px;font-size:10px;width:100%" onclick="addToCart('Gift Card – KES 500','🎁','KES 500');showToast('Gift Card added to bag 🎁')">Buy Now</button>
+        <button class="btn-primary" style="margin-top:1rem;padding:10px 20px;font-size:10px;width:100%" onclick="addToCart('Gift Card – KES 500','https://images.unsplash.com/photo-1668463919545-73f4bb38e1d3?w=200&h=200&fit=crop&auto=format','KES 500');showToast('Gift Card added to bag')">Buy Now</button>
       </div>
       <div style="background:linear-gradient(135deg,var(--blush-light),var(--gold-light));border:0.5px solid var(--border);border-radius:10px;padding:1.8rem 1.2rem;text-align:center;cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
-        <div style="font-size:36px;margin-bottom:0.6rem">🎁</div>
+        <div style="width:64px;height:64px;border-radius:8px;overflow:hidden;margin:0 auto 0.6rem"><img src="https://images.unsplash.com/photo-1668463919545-73f4bb38e1d3?w=200&h=200&fit=crop&auto=format" alt="Gift Card" style="width:100%;height:100%;object-fit:cover"></div>
         <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem">Classic</p>
         <p style="font-family:var(--font);font-size:26px;color:var(--charcoal);font-style:italic">KES 1,000</p>
-        <button class="btn-primary" style="margin-top:1rem;padding:10px 20px;font-size:10px;width:100%" onclick="addToCart('Gift Card – KES 1,000','🎁','KES 1,000');showToast('Gift Card added to bag 🎁')">Buy Now</button>
+        <button class="btn-primary" style="margin-top:1rem;padding:10px 20px;font-size:10px;width:100%" onclick="addToCart('Gift Card – KES 1,000','https://images.unsplash.com/photo-1668463919545-73f4bb38e1d3?w=200&h=200&fit=crop&auto=format','KES 1,000');showToast('Gift Card added to bag')">Buy Now</button>
       </div>
       <div style="background:linear-gradient(135deg,var(--gold-light),var(--blush));border:0.5px solid var(--gold);border-radius:10px;padding:1.8rem 1.2rem;text-align:center;cursor:pointer;transition:transform 0.2s;position:relative" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
-        <span style="position:absolute;top:10px;right:10px;background:var(--charcoal);color:var(--gold-light);font-size:9px;letter-spacing:1px;padding:3px 8px;border-radius:2px">Popular</span>
-        <div style="font-size:36px;margin-bottom:0.6rem">🎁</div>
+        <span style="position:absolute;top:10px;right:10px;background:var(--ink);color:var(--gold-light);font-size:9px;letter-spacing:1px;padding:3px 8px;border-radius:2px;z-index:1">Popular</span>
+        <div style="width:64px;height:64px;border-radius:8px;overflow:hidden;margin:0 auto 0.6rem"><img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=200&h=200&fit=crop&auto=format" alt="Gift Card" style="width:100%;height:100%;object-fit:cover"></div>
         <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem">Glam</p>
         <p style="font-family:var(--font);font-size:26px;color:var(--charcoal);font-style:italic">KES 2,000</p>
-        <button class="btn-primary" style="margin-top:1rem;padding:10px 20px;font-size:10px;width:100%" onclick="addToCart('Gift Card – KES 2,000','🎁','KES 2,000');showToast('Gift Card added to bag 🎁')">Buy Now</button>
+        <button class="btn-primary" style="margin-top:1rem;padding:10px 20px;font-size:10px;width:100%" onclick="addToCart('Gift Card – KES 2,000','https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=200&h=200&fit=crop&auto=format','KES 2,000');showToast('Gift Card added to bag')">Buy Now</button>
       </div>
-      <div style="background:linear-gradient(135deg,var(--charcoal),#3D3028);border:0.5px solid var(--gold);border-radius:10px;padding:1.8rem 1.2rem;text-align:center;cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
-        <div style="font-size:36px;margin-bottom:0.6rem">🎁</div>
+      <div style="background:linear-gradient(135deg,var(--ink),#3D3028);border:0.5px solid var(--gold);border-radius:10px;padding:1.8rem 1.2rem;text-align:center;cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+        <div style="width:64px;height:64px;border-radius:8px;overflow:hidden;margin:0 auto 0.6rem"><img src="https://images.unsplash.com/photo-1694481901573-a970f982ac5e?w=200&h=200&fit=crop&auto=format" alt="Gift Card" style="width:100%;height:100%;object-fit:cover"></div>
         <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem">Luxury</p>
         <p style="font-family:var(--font);font-size:26px;color:var(--gold-light);font-style:italic">KES 5,000</p>
-        <button class="btn-outline" style="margin-top:1rem;padding:10px 20px;font-size:10px;width:100%;border-color:var(--gold);color:var(--gold)" onclick="addToCart('Gift Card – KES 5,000','🎁','KES 5,000');showToast('Gift Card added to bag 🎁')">Buy Now</button>
+        <button class="btn-outline" style="margin-top:1rem;padding:10px 20px;font-size:10px;width:100%;border-color:var(--gold);color:var(--gold)" onclick="addToCart('Gift Card – KES 5,000','https://images.unsplash.com/photo-1694481901573-a970f982ac5e?w=200&h=200&fit=crop&auto=format','KES 5,000');showToast('Gift Card added to bag')">Buy Now</button>
       </div>
     </div>
   </div>
@@ -965,48 +1220,48 @@
   <!-- MYSTERY BOXES -->
   <div class="section-alt">
     <div class="section-header">
-      <p class="section-tag">✦ Mystery Boxes</p>
+      <p class="section-tag">Mystery Boxes</p>
       <h2 class="section-title">Surprise Your Inner Glam</h2>
-      <p class="section-sub">Curated by our beauty experts — valued at 2× the box price, guaranteed</p>
+      <p class="section-sub">Curated by our beauty experts — valued at upto 1.5x the box price, guaranteed</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem">
       <div style="background:var(--ivory);border:0.5px solid var(--border);border-radius:10px;overflow:hidden">
-        <div style="background:linear-gradient(135deg,var(--nude),var(--blush-light));height:120px;display:flex;align-items:center;justify-content:center;font-size:52px">🎀</div>
+        <div style="height:120px;overflow:hidden"><img src="https://images.unsplash.com/photo-1668463919545-73f4bb38e1d3?w=400&h=240&fit=crop&auto=format" alt="Starter Mystery Box" style="width:100%;height:100%;object-fit:cover"></div>
         <div style="padding:1.2rem">
           <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem">Beginner Glam</p>
           <p style="font-family:var(--font);font-size:18px;color:var(--charcoal);font-style:italic;margin-bottom:0.4rem">Starter Mystery Box</p>
           <p style="font-size:12px;color:var(--warm-gray);line-height:1.5;margin-bottom:0.8rem">3–4 handpicked products — foundations, lip & eye essentials. Perfect for first-timers.</p>
-          <p style="font-size:10px;color:var(--warm-gray);margin-bottom:0.8rem">Valued at <strong style="color:var(--gold-deep)">KES 3,000+</strong></p>
+          <p style="font-size:10px;color:var(--warm-gray);margin-bottom:0.8rem">Valued at <strong style="color: var(--gold-deep-text)">KES 3,000+</strong></p>
           <div style="display:flex;align-items:center;justify-content:space-between">
             <p style="font-family:var(--font);font-size:22px;color:var(--charcoal);font-style:italic">KES 1,500</p>
-            <button class="product-add" onclick="addToCart('Starter Mystery Box','🎀','KES 1,500')">+</button>
+            <button class="product-add" onclick="addToCart('Starter Mystery Box','https://images.unsplash.com/photo-1668463919545-73f4bb38e1d3?w=400&h=240&fit=crop&auto=format','KES 1,500')">+</button>
           </div>
         </div>
       </div>
       <div style="background:var(--ivory);border:0.5px solid var(--border-hover);border-radius:10px;overflow:hidden;position:relative">
-        <span style="position:absolute;top:12px;left:12px;background:var(--charcoal);color:var(--gold-light);font-size:9px;letter-spacing:1px;padding:3px 8px;border-radius:2px;z-index:1">Best Value</span>
-        <div style="background:linear-gradient(135deg,var(--blush-light),var(--gold-light));height:120px;display:flex;align-items:center;justify-content:center;font-size:52px">✨</div>
+        <span style="position:absolute;top:12px;left:12px;background:var(--ink);color:var(--gold-light);font-size:9px;letter-spacing:1px;padding:3px 8px;border-radius:2px;z-index:1">Best Value</span>
+        <div style="height:120px;overflow:hidden"><img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400&h=240&fit=crop&auto=format" alt="Glam Mystery Box" style="width:100%;height:100%;object-fit:cover"></div>
         <div style="padding:1.2rem">
           <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem">Full Face</p>
           <p style="font-family:var(--font);font-size:18px;color:var(--charcoal);font-style:italic;margin-bottom:0.4rem">Glam Mystery Box</p>
           <p style="font-size:12px;color:var(--warm-gray);line-height:1.5;margin-bottom:0.8rem">6–7 products — full face coverage inc. primer, setting spray, brushes & more.</p>
-          <p style="font-size:10px;color:var(--warm-gray);margin-bottom:0.8rem">Valued at <strong style="color:var(--gold-deep)">KES 6,000+</strong></p>
+          <p style="font-size:10px;color:var(--warm-gray);margin-bottom:0.8rem">Valued at <strong style="color: var(--gold-deep-text)">KES 6,000+</strong></p>
           <div style="display:flex;align-items:center;justify-content:space-between">
             <p style="font-family:var(--font);font-size:22px;color:var(--charcoal);font-style:italic">KES 3,000</p>
-            <button class="product-add" onclick="addToCart('Glam Mystery Box','✨','KES 3,000')">+</button>
+            <button class="product-add" onclick="addToCart('Glam Mystery Box','https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400&h=240&fit=crop&auto=format','KES 3,000')">+</button>
           </div>
         </div>
       </div>
       <div style="background:var(--ivory);border:0.5px solid var(--border);border-radius:10px;overflow:hidden">
-        <div style="background:linear-gradient(135deg,var(--charcoal),#3D3028);height:120px;display:flex;align-items:center;justify-content:center;font-size:52px">👑</div>
+        <div style="height:120px;overflow:hidden"><img src="https://images.unsplash.com/photo-1694481901573-a970f982ac5e?w=400&h=240&fit=crop&auto=format" alt="Luxury Mystery Box" style="width:100%;height:100%;object-fit:cover"></div>
         <div style="padding:1.2rem">
           <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem">Ultimate Luxury</p>
           <p style="font-family:var(--font);font-size:18px;color:var(--charcoal);font-style:italic;margin-bottom:0.4rem">Luxury Mystery Box</p>
           <p style="font-size:12px;color:var(--warm-gray);line-height:1.5;margin-bottom:0.8rem">10+ premium products — the complete beauty arsenal, curated just for you.</p>
-          <p style="font-size:10px;color:var(--warm-gray);margin-bottom:0.8rem">Valued at <strong style="color:var(--gold-deep)">KES 10,000+</strong></p>
+          <p style="font-size:10px;color:var(--warm-gray);margin-bottom:0.8rem">Valued at <strong style="color: var(--gold-deep-text)">KES 10,000+</strong></p>
           <div style="display:flex;align-items:center;justify-content:space-between">
             <p style="font-family:var(--font);font-size:22px;color:var(--charcoal);font-style:italic">KES 5,000</p>
-            <button class="product-add" onclick="addToCart('Luxury Mystery Box','👑','KES 5,000')">+</button>
+            <button class="product-add" onclick="addToCart('Luxury Mystery Box','https://images.unsplash.com/photo-1694481901573-a970f982ac5e?w=400&h=240&fit=crop&auto=format','KES 5,000')">+</button>
           </div>
         </div>
       </div>
@@ -1016,42 +1271,42 @@
   <!-- VOUCHERS -->
   <div class="section">
     <div class="section-header">
-      <p class="section-tag">✦ Vouchers</p>
+      <p class="section-tag">Vouchers</p>
       <h2 class="section-title">Redeem a Voucher</h2>
       <p class="section-sub">Apply these perks at checkout — one voucher per order</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem">
       <div style="border:1.5px dashed var(--gold);border-radius:8px;padding:1.4rem;display:flex;align-items:center;gap:1rem;background:rgba(201,169,110,0.04)">
-        <div style="font-size:36px;flex-shrink:0">🚚</div>
-        <div style="flex:1">
-          <p style="font-size:13px;font-weight:600;color:var(--charcoal);margin-bottom:2px">Free Delivery Voucher</p>
-          <p style="font-size:12px;color:var(--warm-gray)">Valid on any order, any amount. No minimum spend.</p>
-        </div>
-        <button class="btn-primary" style="padding:9px 14px;font-size:10px;white-space:nowrap" onclick="showToast('Free Delivery Voucher applied! 🚚')">Claim</button>
-      </div>
-      <div style="border:1.5px dashed var(--gold);border-radius:8px;padding:1.4rem;display:flex;align-items:center;gap:1rem;background:rgba(201,169,110,0.04)">
-        <div style="font-size:36px;flex-shrink:0">🎀</div>
-        <div style="flex:1">
-          <p style="font-size:13px;font-weight:600;color:var(--charcoal);margin-bottom:2px">Free Gift Wrapping</p>
-          <p style="font-size:12px;color:var(--warm-gray)">Complimentary luxury gift wrap on your entire order.</p>
-        </div>
-        <button class="btn-primary" style="padding:9px 14px;font-size:10px;white-space:nowrap" onclick="showToast('Gift Wrapping Voucher applied! 🎀')">Claim</button>
-      </div>
-      <div style="border:1.5px dashed var(--gold);border-radius:8px;padding:1.4rem;display:flex;align-items:center;gap:1rem;background:rgba(201,169,110,0.04)">
-        <div style="font-size:36px;flex-shrink:0">💅</div>
-        <div style="flex:1">
-          <p style="font-size:13px;font-weight:600;color:var(--charcoal);margin-bottom:2px">Buy 2, Get 1 Free</p>
-          <p style="font-size:12px;color:var(--warm-gray)">Add 3 items — the cheapest one is on us. This week only.</p>
-        </div>
-        <button class="btn-primary" style="padding:9px 14px;font-size:10px;white-space:nowrap" onclick="showToast('Buy 2 Get 1 Free applied! 💅')">Claim</button>
-      </div>
-      <div style="border:1.5px dashed var(--gold);border-radius:8px;padding:1.4rem;display:flex;align-items:center;gap:1rem;background:rgba(201,169,110,0.04)">
-        <div style="font-size:36px;flex-shrink:0">🌟</div>
+        <div style="font-size:36px;flex-shrink:0;color:var(--gold)"><i class="ti ti-star"></i></div>
         <div style="flex:1">
           <p style="font-size:13px;font-weight:600;color:var(--charcoal);margin-bottom:2px">KES 500 Off</p>
-          <p style="font-size:12px;color:var(--warm-gray)">KES 500 discount on orders of KES 3,000 or more.</p>
+          <p style="font-size:12px;color:var(--warm-gray);line-height:1.4">KES 500 Off on orders of KES 3,500 and above</p>
         </div>
-        <button class="btn-primary" style="padding:9px 14px;font-size:10px;white-space:nowrap" onclick="showToast('KES 500 Voucher applied! 🌟')">Claim</button>
+        <button class="btn-primary" style="padding:9px 14px;font-size:10px;white-space:nowrap" onclick="claimVoucher('500_OFF')">Claim</button>
+      </div>
+      <div style="border:1.5px dashed var(--gold);border-radius:8px;padding:1.4rem;display:flex;align-items:center;gap:1rem;background:rgba(201,169,110,0.04)">
+        <div style="font-size:36px;flex-shrink:0;color:var(--gold)"><i class="ti ti-truck"></i></div>
+        <div style="flex:1">
+          <p style="font-size:13px;font-weight:600;color:var(--charcoal);margin-bottom:2px">Free Delivery Voucher</p>
+          <p style="font-size:12px;color:var(--warm-gray);line-height:1.4">Upon realised loyalty you get 3 free deliveries</p>
+        </div>
+        <button class="btn-primary" style="padding:9px 14px;font-size:10px;white-space:nowrap" onclick="claimVoucher('FREE_DELIVERY')">Claim</button>
+      </div>
+      <div style="border:1.5px dashed var(--gold);border-radius:8px;padding:1.4rem;display:flex;align-items:center;gap:1rem;background:rgba(201,169,110,0.04)">
+        <div style="font-size:36px;flex-shrink:0;color:var(--gold)"><i class="ti ti-sparkles"></i></div>
+        <div style="flex:1">
+          <p style="font-size:13px;font-weight:600;color:var(--charcoal);margin-bottom:2px">Buy 5, Get 1 Free</p>
+          <p style="font-size:12px;color:var(--warm-gray);line-height:1.4">Buy 5, Get 1 free item of our own choice that can only be claimed once per week</p>
+        </div>
+        <button class="btn-primary" style="padding:9px 14px;font-size:10px;white-space:nowrap" onclick="claimVoucher('BUY5_GET1')">Claim</button>
+      </div>
+      <div style="border:1.5px dashed var(--gold);border-radius:8px;padding:1.4rem;display:flex;align-items:center;gap:1rem;background:rgba(201,169,110,0.04)">
+        <div style="font-size:36px;flex-shrink:0;color:var(--gold)"><i class="ti ti-gift"></i></div>
+        <div style="flex:1">
+          <p style="font-size:13px;font-weight:600;color:var(--charcoal);margin-bottom:2px">Free Gift Wrapping</p>
+          <p style="font-size:12px;color:var(--warm-gray);line-height:1.4">Free gift wraping voucher on gift cards, mystery boxes and orders above KES 1,000 with a complimentary luxury gift wrap</p>
+        </div>
+        <button class="btn-primary" style="padding:9px 14px;font-size:10px;white-space:nowrap" onclick="claimVoucher('GIFT_WRAP')">Claim</button>
       </div>
     </div>
   </div>
@@ -1059,12 +1314,12 @@
   <!-- COUNTDOWN BANNER -->
   <div class="section-alt">
     <div class="promo-banner" style="flex-direction:column;text-align:center;gap:1.2rem">
-      <p style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)">✦ Next Offers Drop</p>
+      <p style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)">Next Offers Drop</p>
       <h3 style="font-family:var(--font);font-size:28px;color:var(--gold-light);font-style:italic;margin:0">New deals land every Monday & Thursday</h3>
       <p style="font-size:13px;color:var(--warm-gray);max-width:460px;margin:0 auto">Subscribe to our newsletter to get notified the moment fresh offers go live — before anyone else.</p>
       <div class="newsletter-form" style="max-width:380px;margin:0 auto">
         <input type="email" placeholder="Your email address" style="background:rgba(255,255,255,0.1);border-color:rgba(201,169,110,0.4);color:var(--gold-light)" />
-        <button class="btn-primary" onclick="showToast('You\'re on the list! ✨')">Notify Me</button>
+        <button class="btn-primary" onclick="showToast('You\'re on the list!')">Notify Me</button>
       </div>
     </div>
   </div>
@@ -1073,30 +1328,30 @@
 <!-- ABOUT -->
 <div class="page" id="page-about">
   <div class="about-hero">
-    <p class="section-tag">✦ Established 2025</p>
+    <p class="section-tag">Established 2025</p>
     <h1>Beauty is a Philosophy, Not a Product</h1>
-    <p>Bloom & Gloom was born from a simple conviction: every person deserves to experience the ritual of luxury beauty without compromise on ethics, sustainability, or efficacy.</p>
+    <p>Beauty & Bold was born from a simple conviction: every person deserves to experience the ritual of luxury beauty without compromise on ethics, sustainability, or efficacy.</p>
   </div>
   <div class="section">
-    <div class="section-header"><p class="section-tag">✦ Our Values</p><h2 class="section-title">What We Stand For</h2></div>
+    <div class="section-header"><p class="section-tag">Our Values</p><h2 class="section-title">What We Stand For</h2></div>
     <div class="about-values">
-      <div class="value-card"><div class="value-icon">🌿</div><h3 class="value-title">Pure Ingredients</h3><p class="value-desc">We source only the finest botanical extracts and responsible luxury ingredients from certified ethical suppliers across the globe.</p></div>
-      <div class="value-card"><div class="value-icon">✨</div><h3 class="value-title">Artisan Craft</h3><p class="value-desc">Each formula is developed by our team of cosmetic chemists and perfumers with decades of combined expertise in luxury beauty.</p></div>
-      <div class="value-card"><div class="value-icon">🌍</div><h3 class="value-title">Conscious Beauty</h3><p class="value-desc">From refillable packaging to carbon-neutral shipping, sustainability is woven into every decision we make as a brand.</p></div>
+      <div class="value-card"><div class="value-icon"><i class="ti ti-leaf" style="color:var(--gold)"></i></div><h3 class="value-title">Pure Ingredients</h3><p class="value-desc">We source only the finest botanical extracts and responsible luxury ingredients from certified ethical suppliers across the globe.</p></div>
+      <div class="value-card"><div class="value-icon"><i class="ti ti-brush" style="color:var(--gold)"></i></div><h3 class="value-title">Artisan Craft</h3><p class="value-desc">Each formula is developed by our team of cosmetic chemists and perfumers with decades of combined expertise in luxury beauty.</p></div>
+      <div class="value-card"><div class="value-icon"><i class="ti ti-world" style="color:var(--gold)"></i></div><h3 class="value-title">Conscious Beauty</h3><p class="value-desc">From refillable packaging to carbon-neutral shipping, sustainability is woven into every decision we make as a brand.</p></div>
     </div>
   </div>
   <div class="section-alt">
     <div class="about-stats">
       <div><div class="about-stat-num">1</div><div class="about-stat-label">Year of Excellence</div></div>
-      <div><div class="about-stat-num">120+</div><div class="about-stat-label">Products</div></div>
-      <div><div class="about-stat-num">5,000+</div><div class="about-stat-label">Happy Clients</div></div>
+      <div><div class="about-stat-num" style="font-size:28px">Hundreds</div><div class="about-stat-label">of Products</div></div>
+      <div><div class="about-stat-num">1,000+</div><div class="about-stat-label">Happy clients</div></div>
     </div>
   </div>
   <div class="section">
-    <div class="section-header"><p class="section-tag">✦ Client Love</p><h2 class="section-title">Words from Our Community</h2></div>
+    <div class="section-header"><p class="section-tag">Client Love</p><h2 class="section-title">Words from Our Community</h2></div>
     <div class="testimonials-grid">
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"I ordered the Maybelline Superstay and it genuinely lasted all day through Nairobi heat. I'm obsessed — already on my third bottle!"</p><div class="testi-author"><div class="testi-avatar av-1">AW</div><div><p class="testi-name">Amina Wanjiru</p><p class="testi-sub">Verified Buyer · Foundations</p></div></div></div>
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"The Blossom African Queen palette is stunning — the pigment is unreal! Bloom & Gloom is the only place I shop for my makeup now."</p><div class="testi-author"><div class="testi-avatar av-2">FK</div><div><p class="testi-name">Faith Kamau</p><p class="testi-sub">Verified Buyer · Eye Makeup</p></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"I ordered the Maybelline Superstay and it genuinely lasted all day through Nairobi heat. I'm obsessed — already on my third bottle!"</p><div class="testi-author"><div class="testi-avatar av-1">GW</div><div><p class="testi-name">Grace Wanjiru</p><p class="testi-sub">Verified Buyer · Foundations</p></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"The Blossom African Queen palette is stunning — the pigment is unreal! Beauty & Bold is the only place I shop for my makeup now."</p><div class="testi-author"><div class="testi-avatar av-2">FK</div><div><p class="testi-name">Faith Kamau</p><p class="testi-sub">Verified Buyer · Eye Makeup</p></div></div></div>
       <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Fast delivery to Ruiru, gorgeous packaging, and the Zoeva brushes are absolute quality. Will definitely be back for more!"</p><div class="testi-author"><div class="testi-avatar av-3">CN</div><div><p class="testi-name">Christine Njeri</p><p class="testi-sub">Verified Buyer · Brushes</p></div></div></div>
     </div>
   </div>
@@ -1110,33 +1365,81 @@
   </div>
   <div class="section">
     <div class="blog-grid">
-      <div class="blog-card"><div class="blog-img blog-b1">🌹</div><div class="blog-info"><p class="blog-tag">Skincare</p><p class="blog-title">The Science Behind Our Rose Extract Formula</p><p class="blog-excerpt">Discover how Bulgarian rose oil is transformed into a potent anti-aging active.</p><p class="blog-meta">May 12, 2026 · 5 min read</p></div></div>
-      <div class="blog-card"><div class="blog-img blog-b2">✨</div><div class="blog-info"><p class="blog-tag">Beauty Tips</p><p class="blog-title">Your 5-Step Morning Ritual for All-Day Glow</p><p class="blog-excerpt">Expert layering techniques to maximise the efficacy of your skincare routine.</p><p class="blog-meta">April 28, 2026 · 7 min read</p></div></div>
-      <div class="blog-card"><div class="blog-img blog-b3">🌿</div><div class="blog-info"><p class="blog-tag">Sustainability</p><p class="blog-title">Our Journey to Carbon-Neutral by 2027</p><p class="blog-excerpt">How Bloom & Gloom is rethinking every aspect of our supply chain for the planet.</p><p class="blog-meta">April 10, 2026 · 6 min read</p></div></div>
-      <div class="blog-card"><div class="blog-img blog-b4">💄</div><div class="blog-info"><p class="blog-tag">Colour</p><p class="blog-title">Spring/Summer 2026 Colour Forecast</p><p class="blog-excerpt">The shades our makeup artists are reaching for this season — and why.</p><p class="blog-meta">March 22, 2026 · 4 min read</p></div></div>
-      <div class="blog-card"><div class="blog-img blog-b5">💎</div><div class="blog-info"><p class="blog-tag">Ingredients</p><p class="blog-title">Gold in Beauty: Luxury or Science?</p><p class="blog-excerpt">Unpacking the real benefits of 24K gold micro-particles in skincare.</p><p class="blog-meta">March 8, 2026 · 8 min read</p></div></div>
-      <div class="blog-card"><div class="blog-img blog-b6">🛁</div><div class="blog-info"><p class="blog-tag">Wellness</p><p class="blog-title">The Art of the Self-Care Sunday Ritual</p><p class="blog-excerpt">Transform your bathroom into a sanctuary with these luxurious techniques.</p><p class="blog-meta">February 14, 2026 · 5 min read</p></div></div>
+      <div class="blog-card">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&h=400&fit=crop&auto=format" alt="Morning Routine"></div>
+        <div class="blog-info">
+          <p class="blog-tag">Morning Routine</p>
+          <p class="blog-title">The Luminous Morning Ritual</p>
+          <p class="blog-excerpt">Start with a gentle cleanser followed by a Vitamin C serum for brightness. Apply a lightweight moisturizer and finish with a broad-spectrum SPF 50 to protect your glow all day long.</p>
+          <p class="blog-meta">June 2026 · 4 min read</p>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&h=400&fit=crop&auto=format" alt="Beauty Tips"></div>
+        <div class="blog-info">
+          <p class="blog-tag">Beauty Tips</p>
+          <p class="blog-title">Pro Secrets for Flawless Application</p>
+          <p class="blog-excerpt">Always prep your skin with a primer suited for your type. Blend your foundation down to your neck for a seamless transition, and use a damp beauty blender for a natural, dewy finish.</p>
+          <p class="blog-meta">June 2026 · 5 min read</p>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=400&fit=crop&auto=format" alt="Night Routine"></div>
+        <div class="blog-info">
+          <p class="blog-tag">Night Routine</p>
+          <p class="blog-title">The Restorative Evening Sequence</p>
+          <p class="blog-excerpt">Double cleanse to remove all makeup and pollutants. Apply a hydrating toner, followed by a nourishing night cream or oil. Don't forget an eye cream to soothe and repair while you sleep.</p>
+          <p class="blog-meta">June 2026 · 6 min read</p>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop&auto=format" alt="Wellness Tips"></div>
+        <div class="blog-info">
+          <p class="blog-tag">Wellness Tips</p>
+          <p class="blog-title">Beauty Starts from Within</p>
+          <p class="blog-excerpt">Hydrate with at least 2 liters of water daily. Incorporate antioxidant-rich foods like berries and greens into your diet, and ensure you get 7-9 hours of quality sleep for cell regeneration.</p>
+          <p class="blog-meta">June 2026 · 4 min read</p>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&h=400&fit=crop&auto=format" alt="History of Beauty"></div>
+        <div class="blog-info">
+          <p class="blog-tag">History of Beauty</p>
+          <p class="blog-title">An Artifact: The Evolution of Elegance</p>
+          <p class="blog-excerpt">From Ancient Egypt's kohl-rimmed eyes to the lead-based powders of the Renaissance and the 1920s flapper revolution, beauty has always been a reflection of culture, status, and self-expression.</p>
+          <p class="blog-meta">Historical Archive · 8 min read</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- PRODUCT DETAIL -->
-<div class="page" id="page-product">
-  <div id="product-detail-content"></div>
+<!-- WISHLIST DRAWER OVERLAY -->
+<div class="account-modal-overlay" id="wishlist-overlay" onclick="closeWishlistOnOverlay(event)">
+  <div class="account-modal" style="width:500px;max-width:calc(100vw - 2rem);padding:1.8rem" onclick="event.stopPropagation()">
+    <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid var(--border);padding-bottom:1rem;margin-bottom:1rem">
+      <div>
+        <h4 style="font-family:var(--font);font-size:22px;color:var(--charcoal);font-style:italic;margin:0">Liked Products ❤️</h4>
+        <p style="font-size:11px;color:var(--warm-gray);margin:4px 0 0" id="wishlist-drawer-sub">Products you like reflect here</p>
+      </div>
+      <button style="background:none;border:none;cursor:pointer;font-size:16px;color:var(--warm-gray)" onclick="toggleWishlistDrawer()">✕</button>
+    </div>
+    <div id="wishlist-drawer-grid" style="max-height:55vh;overflow-y:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:10px"></div>
+  </div>
 </div>
 
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <span class="footer-logo">Bloom <span>&</span> Gloom</span>
+      <span class="footer-logo">Beauty <span>&</span> Bold</span>
       <p>Luxury beauty crafted with purpose. Cruelty-free, sustainably sourced, and designed for the modern woman.</p>
     </div>
     <div class="footer-col">
       <h4>Shop</h4>
-      <a onclick="showPage('shop')">Face Makeup</a>
-      <a onclick="showPage('shop')">Eye Makeup</a>
-      <a onclick="showPage('shop')">Lips & Cheeks</a>
-      <a onclick="showPage('shop')">Tools & Accessories</a>
+      <a onclick="shopCategory('face')">Face Makeup</a>
+      <a onclick="shopCategory('eye')">Eye Makeup</a>
+      <a onclick="shopCategory('lips')">Lips & Cheeks</a>
+      <a onclick="shopCategory('tools')">Tools & Accessories</a>
       <a onclick="showPage('offers')">Offers & Deals</a>
     </div>
     <div class="footer-col">
@@ -1144,26 +1447,18 @@
       <a onclick="showPage('about')">Our Story</a>
       <a onclick="showPage('blog')">Journal</a>
       <a onclick="toggleContactModal()">Contact Us</a>
-      <a>Careers</a>
-      <a>Press</a>
     </div>
     <div class="footer-col">
-      <h4>Help</h4>
-      <a>Shipping Info</a>
-      <a>Returns Policy</a>
-      <a>Order Tracking</a>
-      <a onclick="toggleContactModal()">Beauty Concierge</a>
+      <h4>Info</h4>
+      <a>Terms of Use</a>
+      <a>Privacy Policy</a>
+      <a>Cookies</a>
       <a>FAQ</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Bloom & Gloom. All rights reserved. · Privacy Policy · Terms of Service</p>
-    <div class="socials">
-      <div class="social-btn">📸</div>
-      <div class="social-btn">📌</div>
-      <div class="social-btn">🎵</div>
-      <div class="social-btn">▶</div>
-    </div>
+    <p>© 2026 Beauty & Bold. All rights reserved. · Privacy Policy · Terms of Service</p>
+
   </div>
 </footer>
 
@@ -1178,7 +1473,7 @@
 <div class="contact-modal-overlay" id="contact-modal-overlay" onclick="closeContactOnOverlay(event)">
   <div class="contact-modal" id="contact-modal">
     <div class="contact-modal-header">
-      <h4>Bloom & Gloom Concierge</h4>
+      <h4>Beauty & Bold Concierge</h4>
       <button class="contact-modal-close" onclick="toggleContactModal()">✕</button>
     </div>
     <div class="contact-modal-body">
@@ -1193,14 +1488,14 @@
           <select><option>Product Enquiry</option><option>Order Support</option><option>Returns & Exchanges</option><option>Press & Partnerships</option><option>Other</option></select>
         </div>
         <div class="cform-group"><label>Message</label><textarea placeholder="Tell us how we can help..."></textarea></div>
-        <button class="btn-primary" style="width:100%;padding:12px;margin-top:4px" onclick="showToast('Message sent! We\'ll reply within 2 hours ✨');toggleContactModal()">Send Message</button>
+        <button class="btn-primary" style="width:100%;padding:12px;margin-top:4px" onclick="showToast('Message sent! We\'ll reply within 2 hours');toggleContactModal()">Send Message</button>
       </div>
       <div class="contact-panel" id="tab-info">
-        <div class="contact-info-item"><div class="contact-info-icon">📍</div><div class="contact-info-text"><strong>Location</strong><span>Ruiru Business Center, Ruiru</span></div></div>
-        <div class="contact-info-item"><div class="contact-info-icon">📞</div><div class="contact-info-text"><strong>Call / WhatsApp</strong><span>0706 081 110 / 0780 885 835</span></div></div>
-        <div class="contact-info-item"><div class="contact-info-icon">✉️</div><div class="contact-info-text"><strong>Email</strong><span>bloomandgloom254@gmail.com</span></div></div>
-        <div class="contact-info-item"><div class="contact-info-icon">💬</div><div class="contact-info-text"><strong>Live Chat</strong><span>Available 24/7 via this widget</span></div></div>
-        <div class="contact-response-badge"><span>⚡</span><div><span>Average response time</span><br><small style="font-weight:600;color:var(--gold-deep)">Under 24 hours</small></div></div>
+        <div class="contact-info-item"><div class="contact-info-icon"><i class="ti ti-map-pin"></i></div><div class="contact-info-text"><strong>Location</strong><span>Ruiru Business Center, Ruiru</span></div></div>
+        <div class="contact-info-item"><div class="contact-info-icon"><i class="ti ti-phone"></i></div><div class="contact-info-text"><strong>Call / WhatsApp</strong><span>0712 345 678 / 0780 885 835</span></div></div>
+        <div class="contact-info-item"><div class="contact-info-icon"><i class="ti ti-mail"></i></div><div class="contact-info-text"><strong>Email</strong><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b8dbd7d6dbd1ddcadfddf8daddd9cdccc1d9d6dcdad7d4dc96dbd7d5">[email&#160;protected]</a></span></div></div>
+        <div class="contact-info-item"><div class="contact-info-icon"><i class="ti ti-message-dots"></i></div><div class="contact-info-text"><strong>Live Chat</strong><span>Available 24/7 via this widget</span></div></div>
+        <div class="contact-response-badge"><span><i class="ti ti-bolt"></i></span><div><span>Average response time</span><br><small style="font-weight:600;color: var(--gold-deep-text)">Under 24 hours</small></div></div>
       </div>
     </div>
   </div>
@@ -1216,8 +1511,13 @@
     <div class="cart-items" id="cart-items-list"></div>
     <div class="cart-footer">
       <div class="cart-subtotal"><span>Subtotal</span><span id="cart-sub">KES 0</span></div>
-      <div class="cart-subtotal"><span>Shipping</span><span style="color:var(--gold-deep)">FREE</span></div>
+      <div class="cart-subtotal" id="cart-discount-row" style="display:none"><span>Discount (<span id="cart-discount-label">Promo</span>)</span><span id="cart-discount-val" style="color:var(--gold)">-KES 0</span></div>
+      <div class="cart-subtotal"><span>Shipping</span><span id="cart-shipping-val" style="color: var(--gold-deep-text)">FREE</span></div>
       <div class="cart-total"><span>Total</span><span id="cart-total-val">KES 0</span></div>
+      <div style="display:flex;gap:4px;margin:8px 0">
+        <input type="text" id="cart-promo-input" placeholder="Promo code" style="flex:1;padding:8px;border:0.5px solid var(--border);border-radius:2px;font-size:11px;outline:none;background:var(--ivory);color:var(--charcoal)">
+        <button class="btn-primary" style="padding:8px 12px;font-size:10px" onclick="applyPromoCode(document.getElementById('cart-promo-input').value)">Apply</button>
+      </div>
       <button class="btn-checkout" onclick="openCheckout()">Secure Checkout</button>
       <button class="btn-outline" style="width:100%;padding:11px;font-size:11px" onclick="toggleCart()">Continue Shopping</button>
     </div>
@@ -1229,7 +1529,7 @@
   <div class="search-box">
     <div class="search-input-row">
       <i class="ti ti-search" style="color:var(--gold);font-size:18px" aria-hidden="true"></i>
-      <input type="text" placeholder="Search products e.g. mascara, primer, foundation…" id="search-input" oninput="runSearch(this.value)" onkeydown="if(event.key==='Enter'&&this.value.trim())goSearchPage(this.value)" />
+      <input type="text" placeholder="Search products mascara, primer, foundation…" id="search-input" oninput="runSearch(this.value)" onkeydown="if(event.key==='Enter'&&this.value.trim())goSearchPage(this.value)" />
       <span style="font-size:12px;color:var(--warm-gray);cursor:pointer" onclick="toggleSearch()">ESC</span>
     </div>
     <div id="search-results-area"></div>
@@ -1263,84 +1563,114 @@
 
 <div class="toast" id="toast"></div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const products = [
   // Moisturizers
-  { id:1, name:'Blossom Moisture Essence', emoji:'💧', price:'KES 850', old:'', badge:'', rating:4.7, reviews:312, category:'Moisturizers' },
+  { id:1, img:'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&h=400&fit=crop&auto=format', name:'Blossom Moisture Essence', price:'KES 850', old:'', badge:'', rating:4.7, reviews:312, category:'Moisturizers' },
   // Foundations
-  { id:2, name:'Vee Beauty Foundation – Total Coverage', emoji:'✨', price:'KES 650', old:'', badge:'', rating:4.6, reviews:528, category:'Foundations' },
-  { id:3, name:'Vee Beauty Foundation – Second Skin', emoji:'✨', price:'KES 650', old:'', badge:'', rating:4.7, reviews:441, category:'Foundations' },
-  { id:4, name:'Maybelline Fit Me Foundation', emoji:'💄', price:'KES 1,200', old:'', badge:'Best Seller', rating:4.8, reviews:1203, category:'Foundations' },
-  { id:5, name:'Maybelline Superstay Foundation', emoji:'💄', price:'KES 1,500', old:'', badge:'New', rating:4.8, reviews:876, category:'Foundations' },
+  { id:2, img:'https://nanahawabeauty.com/cdn/shop/products/image_65b5d0e9-5f62-4b39-b45d-31a36c61b744.jpg?v=1689129261&width=1445', name:'Vee Beauty Foundation – Total Coverage', price:'KES 650', old:'', badge:'', rating:4.6, reviews:228, category:'Foundations' },
+  { id:3, img:'https://tekkiebeautystore.com/wp-content/uploads/2022/10/844E6995-C957-4A4D-BF39-1EA3AA4DA80B.jpeg', name:'Vee Beauty Foundation – Second Skin', price:'KES 650', old:'', badge:'', rating:4.7, reviews:241, category:'Foundations' },
+  { id:4, img:'https://ssbimages.ssbeauty.in/pub/media/catalog/product/images/206092797/206092797_206092797_14.jpg', name:'Maybelline Fit Me Foundation', price:'KES 1,200', old:'', badge:'Best Seller', rating:4.8, reviews:340, category:'Foundations' },
+  { id:5, img:'https://i.pinimg.com/originals/21/f0/5f/21f05f68a06195bf6208705f8054bea6.jpg', name:'Maybelline Superstay Foundation', price:'KES 1,500', old:'', badge:'New', rating:4.8, reviews:276, category:'Foundations' },
   // Concealers
-  { id:6, name:'LA Girl Concealer', emoji:'🎨', price:'KES 750', old:'', badge:'', rating:4.6, reviews:634, category:'Concealers' },
-  { id:7, name:'Zikel Golibe Concealer & Blush', emoji:'🌸', price:'KES 600', old:'', badge:'', rating:4.5, reviews:287, category:'Concealers' },
+  { id:6, img:'https://www.theglamorousgleam.com/wp-content/uploads/2014/01/LA-Girl-Pro-Conceal-HD-Concealer-1.2.jpg', name:'LA Girl Concealer', price:'KES 750', old:'', badge:'', rating:4.6, reviews:334, category:'Concealers' },
+  { id:7, img:'https://girlzkorner.com/wp-content/uploads/2023/04/E3E50AF5-D148-4125-8DE6-5D225643B2A4.jpeg', name:'Zikel Golibe Concealer & Blush', price:'KES 600', old:'', badge:'', rating:4.5, reviews:287, category:'Concealers' },
   // Eye
-  { id:8, name:'Becharm Clown White', emoji:'👁', price:'KES 350', old:'', badge:'', rating:4.4, reviews:198, category:'Eye' },
-  { id:9, name:'Blossom African Queen Eyeshadow Palette', emoji:'🎨', price:'KES 950', old:'', badge:'Best Seller', rating:4.8, reviews:721, category:'Eye' },
-  { id:10, name:'Zikel Nude Girls Eyeshadow Palette', emoji:'✨', price:'KES 800', old:'', badge:'', rating:4.7, reviews:503, category:'Eye' },
-  { id:11, name:'Yizia Wax Clear', emoji:'👁', price:'KES 300', old:'', badge:'', rating:4.3, reviews:145, category:'Eye' },
-  { id:12, name:'Lanell Lash Glue', emoji:'👁', price:'KES 350', old:'', badge:'', rating:4.5, reviews:392, category:'Eye' },
-  { id:13, name:'Mega Impact Mascara', emoji:'👁', price:'KES 700', old:'', badge:'New', rating:4.7, reviews:567, category:'Eye' },
-  { id:14, name:'Karite Gel Eyeliner', emoji:'✏️', price:'KES 450', old:'', badge:'', rating:4.6, reviews:312, category:'Eye' },
-  { id:15, name:'Zikel Liquid Eyeliner', emoji:'✏️', price:'KES 400', old:'', badge:'', rating:4.5, reviews:278, category:'Eye' },
-  { id:16, name:'Davies Eye Pencils', emoji:'✏️', price:'KES 250', old:'', badge:'', rating:4.4, reviews:234, category:'Eye' },
+  { id:8, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKUn3Y97VUbpx5Bf_52jRmfoLTx59hVbAQ1w&s', name:'Becharm Clown White', price:'KES 350', old:'', badge:'', rating:4.4, reviews:198, category:'Eye' },
+  { id:9, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqgF_EtiYcAnZxo2xH5BbzVnLLG-z2hx5AMQ&s', name:'Blossom African Queen Eyeshadow Palette', price:'KES 950', old:'', badge:'Best Seller', rating:4.8, reviews:321, category:'Eye' },
+  { id:10, img:'https://girlzkorner.com/wp-content/uploads/2022/06/whos-that-girl-lip-palette-300x300.jpeg', name:'Zikel Nude Girls Eyeshadow Palette', price:'KES 800', old:'', badge:'', rating:4.7, reviews:303, category:'Eye' },
+  { id:11, img:'https://i0.wp.com/habeautysmakeupstore.com/wp-content/uploads/2024/05/img_6749-1.jpeg?fit=554,554&ssl=1', name:'Yizia Wax Clear', price:'KES 300', old:'', badge:'', rating:4.3, reviews:145, category:'Tools & Accessories' },
+  { id:12, img:'https://russianstorecairo.com/wp-content/uploads/2024/11/1706446450202.png', name:'Lanell Lash Glue', price:'KES 350', old:'', badge:'', rating:4.5, reviews:292, category:'Eye' },
+  { id:13, img:'https://images.unsplash.com/photo-1503236823255-94609f598e71?w=400&h=400&fit=crop&auto=format', name:'Mega Impact Mascara', price:'KES 700', old:'', badge:'New', rating:4.7, reviews:267, category:'Eye' },
+  { id:14, img:'https://shopmamatega.com/cdn/shop/products/6903072224098_4a739d6a-35cb-4c43-a38c-d23c0ae3fe5e_600x.png?v=1702328926', name:'Karite Gel Eyeliner', price:'KES 450', old:'', badge:'', rating:4.6, reviews:312, category:'Eye' },
+  { id:15, img:'https://uae.zikelcosmetics.com/wp-content/uploads/2024/02/Zikel-LiquidPenEyeliner_11zon-scaled.jpg', name:'Zikel Liquid Eyeliner', price:'KES 400', old:'', badge:'', rating:4.5, reviews:278, category:'Eye' },
+  { id:16, img:'https://roarbeautystore.com/wp-content/uploads/2024/05/Davis-Wood-Eye-Brow-Lip-Pencils_-600x600.jpg', name:'Davies Eye Pencils', price:'KES 250', old:'', badge:'', rating:4.4, reviews:234, category:'Eye' },
   // Lip
-  { id:17, name:'Blossom Clear Lipgloss', emoji:'💋', price:'KES 450', old:'', badge:'', rating:4.6, reviews:489, category:'Lip' },
-  { id:18, name:'Blossom Coloured Lipglosses', emoji:'💋', price:'KES 500', old:'', badge:'New', rating:4.7, reviews:612, category:'Lip' },
+  { id:17, img:'https://i.ebayimg.com/images/g/4lkAAOSw9KZiO877/s-l400.webp', name:'Blossom Clear Lipgloss', price:'KES 450', old:'', badge:'', rating:4.6, reviews:289, category:'Lip' },
+  { id:18, img:'https://images-na.ssl-images-amazon.com/images/I/91gtahQfXNL.jpg', name:'Blossom Coloured Lipglosses', price:'KES 500', old:'', badge:'New', rating:4.7, reviews:312, category:'Lip' },
   // Powders
-  { id:19, name:'F/M Powder Palette', emoji:'✨', price:'KES 900', old:'', badge:'', rating:4.5, reviews:367, category:'Powders' },
-  { id:20, name:'Sunmoon Powder & Cream Blush', emoji:'🌸', price:'KES 750', old:'', badge:'', rating:4.6, reviews:423, category:'Powders' },
+  { id:19, img:'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=400&fit=crop&auto=format', name:'F/M Powder Palette', price:'KES 900', old:'', badge:'', rating:4.5, reviews:267, category:'Powders' },
+  { id:20, img:'https://girlzkorner.com/wp-content/uploads/2025/03/download-96.jpeg', name:'Sunmoon Powder & Cream Blush', price:'KES 750', old:'', badge:'', rating:4.6, reviews:323, category:'Powders' },
   // Setting Spray
-  { id:21, name:'Soo Pro Seal It 75ml', emoji:'💨', price:'KES 800', old:'', badge:'', rating:4.7, reviews:534, category:'Setting Spray' },
-  { id:22, name:'Soo Pro Seal It 150ml', emoji:'💨', price:'KES 1,400', old:'', badge:'Best Seller', rating:4.8, reviews:678, category:'Setting Spray' },
-  { id:23, name:'Maybelline Setting Spray', emoji:'💨', price:'KES 1,100', old:'', badge:'', rating:4.7, reviews:892, category:'Setting Spray' },
-  { id:24, name:'Rimmel Setting Spray', emoji:'💨', price:'KES 1,200', old:'', badge:'', rating:4.6, reviews:445, category:'Setting Spray' },
-  { id:25, name:'Flawless Ivy Setting Spray', emoji:'💨', price:'KES 700', old:'', badge:'', rating:4.5, reviews:289, category:'Setting Spray' },
+  { id:21, img:'https://roarbeautystore.com/wp-content/uploads/2024/12/Sooo-Pro-Seal-It-Waterproof-Locking-Mist-75ml-600x600.jpg.webp', name:'Soo Pro Seal It 75ml', price:'KES 800', old:'', badge:'', rating:4.7, reviews:334, category:'Setting Spray' },
+  { id:22, img:'https://roarbeautystore.com/wp-content/uploads/2024/12/Sooo-Pro-Seal-It-Waterproof-Locking-Mist-150ml.jpg.webp', name:'Soo Pro Seal It 150ml', price:'KES 1,400', old:'', badge:'Best Seller', rating:4.8, reviews:278, category:'Setting Spray' },
+  { id:23, img:'https://image.femaledaily.com/dyn/310/images/prod-pics/product_1580289751_Untitled_d_800x800.jpg', name:'Maybelline Setting Spray', price:'KES 1,100', old:'', badge:'', rating:4.7, reviews:292, category:'Setting Spray' },
+  { id:24, img:'https://m.media-amazon.com/images/I/31oVhQiASbL.jpg', name:'Rimmel Setting Spray', price:'KES 1,200', old:'', badge:'', rating:4.6, reviews:345, category:'Setting Spray' },
+  { id:25, img:'https://tekkiebeautystore.com/wp-content/uploads/2022/04/Flawless-ivy-setting-spray-300x300.jpeg', name:'Flawless Ivy Setting Spray', price:'KES 700', old:'', badge:'', rating:4.5, reviews:289, category:'Setting Spray' },
   // Primer
-  { id:26, name:'Rimmel Primer', emoji:'🧴', price:'KES 1,100', old:'', badge:'', rating:4.6, reviews:378, category:'Primer' },
-  { id:27, name:'Elf Primer', emoji:'🧴', price:'KES 950', old:'', badge:'Best Seller', rating:4.8, reviews:1124, category:'Primer' },
+  { id:26, img:'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&h=400&fit=crop&auto=format', name:'Rimmel Primer', price:'KES 1,100', old:'', badge:'', rating:4.6, reviews:278, category:'Primer' },
+  { id:27, img:'https://m.media-amazon.com/images/I/61FfGNgMGsL.jpg', name:'Elf Primer', price:'KES 950', old:'', badge:'Best Seller', rating:4.8, reviews:324, category:'Primer' },
   // Highlighter
-  { id:28, name:'H&E Highlighter Palette', emoji:'✨', price:'KES 850', old:'', badge:'', rating:4.7, reviews:456, category:'Highlighter' },
-  { id:29, name:'Msmetic Glazed Glossed', emoji:'✨', price:'KES 700', old:'', badge:'New', rating:4.6, reviews:234, category:'Highlighter' },
+  { id:28, img:'https://m.media-amazon.com/images/I/513hlhVZFdL.jpg', name:'H&E Highlighter Palette', price:'KES 850', old:'', badge:'', rating:4.7, reviews:346, category:'Highlighter' },
+  { id:29, img:'https://beautyhutafrica.com/wp-content/uploads/2025/04/Msmetics-Glazed-balm-in-Glossed-1.webp', name:'Msmetic Glazed Glossed', price:'KES 700', old:'', badge:'New', rating:4.6, reviews:234, category:'Highlighter' },
   // Blush
-  { id:30, name:'Girl Blush', emoji:'🌸', price:'KES 550', old:'', badge:'', rating:4.5, reviews:312, category:'Blush' },
+  { id:30, img:'https://www.lagirlusa.com/cdn/shop/products/GBL495_prod_img.jpg?format=webp&v=1699773803&width=1024', name:'Girl Blush', price:'KES 550', old:'', badge:'', rating:4.5, reviews:312, category:'Blush' },
   // Makeup Brushes
-  { id:31, name:'Zoeva 15pc Brush Set', emoji:'🖌️', price:'KES 2,500', old:'', badge:'Best Seller', rating:4.9, reviews:789, category:'Brushes' },
+  { id:31, img:'https://www.thebeautyworldstore.com/cdn/shop/files/BCA840FB-C629-4974-9618-B0FA5FC48799.jpg?v=1724530638&width=1445', name:'Zoeva 15pc Brush Set', price:'KES 2,500', old:'', badge:'Best Seller', rating:4.9, reviews:289, category:'Brushes' },
   // Beauty Blenders
-  { id:32, name:'Rose Girl Beauty Blender', emoji:'🥚', price:'KES 450', old:'', badge:'', rating:4.5, reviews:567, category:'Blenders' },
-  { id:33, name:'Powder Puff', emoji:'🫧', price:'KES 250', old:'', badge:'', rating:4.4, reviews:312, category:'Blenders' },
+  { id:32, img:'https://missrosepk.com/cdn/shop/files/Miss_Rose_BlendPro_Beauty_Sponge3.png?v=1735747280&width=1445', name:'Rose Girl Beauty Blender', price:'KES 450', old:'', badge:'', rating:4.5, reviews:267, category:'Blenders' },
+  { id:33, img:'https://colourpop.com/cdn/shop/products/4532996243538-Powder-Puff-Brush-PowderPuff-1.jpg?v=1668563771&width=620', name:'Powder Puff', price:'KES 250', old:'', badge:'', rating:4.4, reviews:312, category:'Blenders' },
 ];
 
 let cart = [];
-let wishlist = new Set();
+let guestWishlist = new Set();
+
+function getUserWishlist() {
+  if (currentUser) {
+    if (!currentUser.wishlist) currentUser.wishlist = new Set();
+    return currentUser.wishlist;
+  }
+  return guestWishlist;
+}
+
+let wishlist = {
+  has: (id) => getUserWishlist().has(id),
+  add: (id) => getUserWishlist().add(id),
+  delete: (id) => getUserWishlist().delete(id),
+  get size() { return getUserWishlist().size; }
+};
+
 let checkoutStep = 1;
 
 function renderProducts(id, items) {
   const el = document.getElementById(id);
   if (!el) return;
   el.innerHTML = items.map(p => `
-    <div class="product-card" onclick="openProductDetail(${p.id})">
-      <div class="product-img">
-        <span style="font-size:52px">${p.emoji}</span>
+    <div class="product-card" onclick="showProduct(${p.id})">
+      <div class="product-img" style="padding:0;overflow:hidden">
+        ${p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <span style="display:none;width:100%;height:100%;align-items:center;justify-content:center;position:absolute;inset:0"><i class="ti ti-photo" style="font-size:32px;color:var(--warm-gray)"></i></span>` : `<span style="width:100%;height:100%;display:flex;align-items:center;justify-content:center"><i class="ti ti-photo" style="font-size:32px;color:var(--warm-gray)"></i></span>`}
         ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
-        <div class="product-wish ${wishlist.has(p.id)?'active':''}" onclick="event.stopPropagation();toggleProductWish(this,${p.id})">${wishlist.has(p.id)?'❤️':'🤍'}</div>
+        <div class="product-wish ${wishlist.has(p.id)?'active':''}" onclick="event.stopPropagation();toggleProductWish(this,${p.id})">
+          <i class="ti ti-heart${wishlist.has(p.id)?'-filled':''}"></i>
+        </div>
       </div>
       <div class="product-info">
-        <p class="product-brand">Bloom & Gloom</p>
+        <p class="product-brand">Beauty & Bold</p>
         <p class="product-name">${p.name}</p>
         <p class="product-stars">${'★'.repeat(Math.floor(p.rating))} <span style="font-size:10px;color:var(--warm-gray)">(${p.reviews.toLocaleString()})</span></p>
         <div class="product-price-row">
           <div><span class="product-price">${p.price}</span>${p.old?`<span class="product-old">${p.old}</span>`:''}</div>
-          <button class="product-add" onclick="event.stopPropagation();addToCart('${p.name}','${p.emoji}','${p.price}')">+</button>
+          <button class="product-add" onclick="event.stopPropagation();addToCart('${p.name}','${p.img}','${p.price}')">+</button>
         </div>
       </div>
     </div>`).join('');
 }
 
 function toggleProductWish(el, id) {
-  if (wishlist.has(id)) { wishlist.delete(id); el.textContent='🤍'; el.classList.remove('active'); showToast('Removed from wishlist'); }
-  else { wishlist.add(id); el.textContent='❤️'; el.classList.add('active'); showToast('Added to wishlist ❤️'); }
+  if (wishlist.has(id)) { 
+    wishlist.delete(id); 
+    el.innerHTML = '<i class="ti ti-heart"></i>'; 
+    el.classList.remove('active'); 
+    showToast('Removed from wishlist'); 
+  } else { 
+    wishlist.add(id); 
+    el.innerHTML = '<i class="ti ti-heart-filled"></i>'; 
+    el.classList.add('active'); 
+    showToast('Added to wishlist ❤️'); 
+  }
+  if (document.getElementById('wishlist-overlay') && document.getElementById('wishlist-overlay').classList.contains('open')) typeof renderWishlistDrawer === 'function' && renderWishlistDrawer();
+  if (document.getElementById('account-modal-overlay') && document.getElementById('account-modal-overlay').classList.contains('open')) typeof renderAccountPanel === 'function' && renderAccountPanel();
 }
 
 function toggleWish(btn) {
@@ -1356,9 +1686,8 @@ function setThumb(el, emoji) {
 
 function changeQty(d) {
   const el = document.getElementById('qty');
-  const max = parseInt(el.max) || 10;
-  const v = parseInt(el.value) + d;
-  if (v >= 1 && v <= max) el.value = v;
+  const v = parseInt(el.value)+d;
+  if (v >= 1 && v <= 10) el.value = v;
 }
 
 document.querySelectorAll('.shade').forEach(s => {
@@ -1370,11 +1699,9 @@ document.querySelectorAll('.shade').forEach(s => {
 
 function renderCart() {
   const list = document.getElementById('cart-items-list');
-  let total = 0;
   list.innerHTML = cart.map((item,i) => {
-    total += item.price;
     return `<div class="cart-item">
-      <div class="cart-item-img">${item.emoji}</div>
+      <div class="cart-item-img"><img src="${item.img}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;border-radius:6px"></div>
       <div class="cart-item-info">
         <p class="cart-item-name">${item.name}</p>
         <p class="cart-item-variant">${item.variant}</p>
@@ -1383,15 +1710,43 @@ function renderCart() {
       <button class="cart-item-remove" onclick="removeFromCart(${i})">✕</button>
     </div>`;
   }).join('');
-  document.getElementById('cart-sub').textContent = 'KES '+total.toLocaleString();
-  document.getElementById('cart-total-val').textContent = 'KES '+total.toLocaleString();
+  
+  const totals = typeof getCartTotals === 'function' ? getCartTotals() : { subtotal: cart.reduce((a,b)=>a+b.price,0), total: cart.reduce((a,b)=>a+b.price,0), discount: 0, shipping: 0 };
+  
+  document.getElementById('cart-sub').textContent = 'KES '+totals.subtotal.toLocaleString();
+  document.getElementById('cart-total-val').textContent = 'KES '+totals.total.toLocaleString();
   document.getElementById('cart-count').textContent = cart.length;
+
+  const discRow = document.getElementById('cart-discount-row');
+  if (discRow) {
+    if (totals.discount > 0) {
+      discRow.style.display = 'flex';
+      document.getElementById('cart-discount-label').textContent = totals.discountLabel || 'Promo';
+      document.getElementById('cart-discount-val').textContent = '-KES '+totals.discount.toLocaleString();
+    } else {
+      discRow.style.display = 'none';
+    }
+  }
+
+  const shipEl = document.getElementById('cart-shipping-val');
+  if (shipEl) {
+    if (totals.shipping === 0) {
+      shipEl.textContent = totals.isFreerideActive ? 'FREE (FREERIDE)' : 'FREE';
+      shipEl.style.color = 'var(--gold-deep-text)';
+    } else {
+      shipEl.textContent = 'KES '+totals.shipping.toLocaleString();
+      shipEl.style.color = 'var(--charcoal)';
+    }
+  }
+
+  if (document.getElementById('page-offers').classList.contains('active')) refreshOffers();
+  if (document.getElementById('checkout-overlay').classList.contains('open')) renderCheckoutStep();
 }
 
-function addToCart(name, emoji, price) {
-  cart.push({ name, emoji, price: parseInt(price.replace('KES ','').replace(/,/g,'')), variant: 'Default' });
+function addToCart(name, img, price) {
+  cart.push({ name, img, price: parseInt(price.replace('KES ','').replace(/,/g,'')), variant: 'Default' });
   renderCart();
-  showToast(name+' added to bag 🛍');
+  showToast(name+' added to bag');
 }
 
 function removeFromCart(i) { cart.splice(i,1); renderCart(); }
@@ -1402,6 +1757,48 @@ function toggleCart() {
 }
 
 function closeCart(e) { if (e.target===document.getElementById('cart-overlay')) toggleCart(); }
+
+function toggleWishlistDrawer() {
+  const overlay = document.getElementById('wishlist-overlay');
+  if (!overlay) return;
+  overlay.classList.toggle('open');
+  if (overlay.classList.contains('open')) renderWishlistDrawer();
+}
+
+function closeWishlistOnOverlay(e) {
+  if (e.target === document.getElementById('wishlist-overlay')) toggleWishlistDrawer();
+}
+
+function renderWishlistDrawer() {
+  const grid = document.getElementById('wishlist-drawer-grid');
+  const sub = document.getElementById('wishlist-drawer-sub');
+  if (!grid) return;
+  const wl = getUserWishlist();
+  if (sub) {
+    sub.textContent = currentUser ? `${currentUser.name.split(' ')[0]}'s Liked Products (${wl.size})` : `Liked Products (${wl.size})`;
+  }
+  if (!wl || wl.size === 0) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:2rem 1rem">
+      <i class="ti ti-heart" style="font-size:36px;color:var(--warm-gray);margin-bottom:0.5rem"></i>
+      <p style="font-size:12px;color:var(--warm-gray);margin:0">No liked products yet. Click ❤️ on items in store to save them!</p>
+    </div>`;
+    return;
+  }
+  const items = products.filter(p => wl.has(p.id));
+  grid.innerHTML = items.map(p => `
+    <div style="background:var(--cream);border:0.5px solid var(--border);border-radius:6px;padding:8px;text-align:center;position:relative;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between" onclick="document.getElementById('wishlist-overlay').classList.remove('open');showProduct(${p.id})">
+      <div>
+        <div style="height:80px;border-radius:4px;overflow:hidden;margin-bottom:4px"><img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover"></div>
+        <p style="font-size:11px;font-weight:600;color:var(--charcoal);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0 0 2px">${p.name}</p>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;border-top:0.5px solid var(--border);padding-top:4px;margin-top:4px">
+        <span style="font-family:var(--font);font-size:11px;font-style:italic;color:var(--gold-deep-text)">${p.price}</span>
+        <button style="background:white;border:0.5px solid var(--border);border-radius:4px;padding:2px 6px;font-size:10px;cursor:pointer" onclick="event.stopPropagation();addToCart('${p.name}','${p.img}','${p.price}')">+</button>
+      </div>
+      <button style="position:absolute;top:4px;right:4px;background:rgba(255,255,255,0.8);border:none;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer" onclick="event.stopPropagation();toggleProductWish(this,${p.id})">❤️</button>
+    </div>
+  `).join('');
+}
 
 function toggleSearch() {
   document.getElementById('search-overlay').classList.toggle('open');
@@ -1425,22 +1822,272 @@ function runSearch(q) {
     <p style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px">${hits.length} result${hits.length>1?'s':''} found</p>
     ${hits.map(p=>`
       <div onclick="goToProduct(${p.id})" style="display:flex;align-items:center;gap:12px;padding:10px 8px;border-radius:6px;cursor:pointer;transition:background 0.15s" onmouseover="this.style.background='rgba(201,169,110,0.08)'" onmouseout="this.style.background='transparent'">
-        <div style="width:44px;height:44px;border-radius:6px;background:linear-gradient(135deg,var(--nude),var(--blush-light));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">${p.emoji}</div>
+        <div style="width:44px;height:44px;border-radius:6px;overflow:hidden;flex-shrink:0"><img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover"></div>
         <div style="flex:1;min-width:0">
           <p style="font-size:13px;font-weight:500;color:var(--charcoal);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.name}</p>
           <p style="font-size:11px;color:var(--warm-gray);margin-top:2px">${p.category}</p>
         </div>
-        <p style="font-family:var(--font);font-style:italic;font-size:14px;color:var(--gold-deep);flex-shrink:0">${p.price}</p>
+        <p style="font-family:var(--font);font-style:italic;font-size:14px;color: var(--gold-deep-text);flex-shrink:0">${p.price}</p>
       </div>`).join('')}`;
 }
 
 function goToProduct(id) {
-  const wasSearchOpen = document.getElementById('search-overlay').classList.contains('open');
-  if (wasSearchOpen) toggleSearch();
-  openProductDetail(id);
+  const searchEl = document.getElementById('search-overlay');
+  if (searchEl && searchEl.classList.contains('open')) {
+    toggleSearch();
+  }
+  showProduct(id);
+}
+
+let currentShopGroup = null;
+let currentShopSidebarCat = 'all';
+
+function shopCategory(group) {
+  currentShopGroup = group;
+  currentShopSidebarCat = 'all';
+  const allRadio = document.getElementById('scat-all');
+  if (allRadio) allRadio.checked = true;
+  doPageSwitch('shop');
+  applyShopFilters();
+}
+
+function selectShopCategory(cat) {
+  currentShopSidebarCat = cat;
+  currentShopGroup = null;
+  applyShopFilters();
 }
 
 function goSearchPage(q) { toggleSearch(); showPage('shop'); }
+
+// ── STATE TRACKING & PROMO CODES LOGIC ──
+let guestState = { purchaseCount: 0, glow20Unlocked: false, glow20Remaining: 0 };
+let appliedPromo = null;
+
+function getUserState() {
+  if (currentUser) {
+    if (currentUser.signInCount === undefined) currentUser.signInCount = 1;
+    if (currentUser.purchaseCount === undefined) currentUser.purchaseCount = 0;
+    if (currentUser.glow20Unlocked === undefined) currentUser.glow20Unlocked = false;
+    if (currentUser.glow20Remaining === undefined) currentUser.glow20Remaining = 0;
+    return currentUser;
+  }
+  return guestState;
+}
+
+function getCartTotals() {
+  const subtotal = cart.reduce((a, b) => a + b.price, 0);
+  if (subtotal === 0) {
+    return { subtotal: 0, discount: 0, shipping: 0, total: 0, discountLabel: null, isFreerideActive: false };
+  }
+  
+  const state = getUserState();
+  const isFreerideActive = subtotal > 2000;
+  
+  if (appliedPromo === 'FREERIDE' && subtotal <= 2000) {
+    appliedPromo = null;
+    showToast('Cart reduced under KES 2,000: FREERIDE deactivated');
+  }
+  
+  const shipping = (isFreerideActive || subtotal >= 5000 || appliedPromo === 'FREE_DELIVERY_VOUCHER') ? 0 : Math.round(subtotal * 0.10);
+  
+  let discount = 0;
+  let discountLabel = null;
+  
+  if (appliedPromo === 'NEWBIE15') {
+    if (currentUser && (currentUser.signInCount === 1 || currentUser.signInCount === 15)) {
+      discount = Math.round(subtotal * 0.15);
+      discountLabel = 'NEWBIE15 (15% Off)';
+    } else {
+      appliedPromo = null;
+    }
+  } else if (appliedPromo === 'BLOOM10') {
+    if (state.purchaseCount >= 10) {
+      discount = Math.round(subtotal * 0.10);
+      discountLabel = 'BLOOM10 (10% Off)';
+    } else {
+      appliedPromo = null;
+    }
+  } else if (appliedPromo === 'GLOW20') {
+    if (state.glow20Unlocked && state.glow20Remaining > 0) {
+      discount = Math.round(subtotal * 0.20);
+      discountLabel = `GLOW20 (20% Off)`;
+    } else {
+      appliedPromo = null;
+    }
+  } else if (appliedPromo === 'UNIVERSAL30' || appliedPromo === 'BLOOM30') {
+    if (subtotal > 10500) {
+      discount = Math.round(subtotal * 0.30);
+      discountLabel = 'UNIVERSAL30 (30% Off)';
+    } else {
+      appliedPromo = null;
+    }
+  } else if (appliedPromo === 'VOUCHER_500') {
+    if (subtotal >= 3500) {
+      discount = 500;
+      discountLabel = 'KES 500 Off Voucher';
+    } else {
+      appliedPromo = null;
+    }
+  } else if (appliedPromo === 'BUY5_GET1') {
+    if (cart.length >= 6) {
+      discount = Math.min(...cart.map(i => i.price));
+      discountLabel = 'Buy 5 Get 1 Free';
+    } else {
+      appliedPromo = null;
+    }
+  }
+  
+  const total = Math.max(0, subtotal - discount + shipping);
+  return { subtotal, discount, shipping, total, discountLabel, isFreerideActive };
+}
+
+function claimVoucher(type) {
+  const subtotal = cart.reduce((a, b) => a + b.price, 0);
+  if (type === '500_OFF') {
+    if (subtotal < 3500) {
+      showToast('KES 500 Off requires orders of KES 3,500 and above');
+      return;
+    }
+    appliedPromo = 'VOUCHER_500';
+    showToast('KES 500 Off Voucher applied!');
+  } else if (type === 'FREE_DELIVERY') {
+    appliedPromo = 'FREE_DELIVERY_VOUCHER';
+    showToast('Free Delivery Voucher active for next 3 purchases!');
+  } else if (type === 'BUY5_GET1') {
+    if (cart.length < 6) {
+      showToast('Add at least 6 items to bag to claim Buy 5, Get 1 Free');
+      return;
+    }
+    appliedPromo = 'BUY5_GET1';
+    showToast('Buy 5 Get 1 Free applied!');
+  }
+  renderCart();
+  if (document.getElementById('checkout-overlay').classList.contains('open')) renderCheckoutStep();
+}
+
+function refreshOffers() {
+  const cartTotal = cart.reduce((a, b) => a + b.price, 0);
+  const state = getUserState();
+  
+  // 1. NEWBIE15: reveal only after user signed in for 1st time and 15th time
+  const canRevealNewbie = currentUser !== null && (currentUser.signInCount === 1 || currentUser.signInCount === 15);
+  updateCodeUI('code-newbie', 'btn-newbie', canRevealNewbie);
+  const descNewbie = document.getElementById('desc-newbie');
+  if (descNewbie) {
+    descNewbie.innerHTML = `15% discount on your 1st and 15th sign-in<br><span style="font-size:10px;color:var(--warm-gray);display:block;margin-top:4px">Status: ${currentUser ? `Signed in (Login #${currentUser.signInCount})` : 'Sign in required'}</span>`;
+  }
+
+  // 2. GLOW20: reveal once user makes purchase for KES 5,000+ (valid next 3 purchases)
+  const canRevealGlow = state.glow20Unlocked && state.glow20Remaining > 0;
+  updateCodeUI('code-glow', 'btn-glow', canRevealGlow);
+  const descGlow = document.getElementById('desc-glow');
+  if (descGlow) {
+    descGlow.innerHTML = `20% discount on next 3 purchases after KES 5,000+ purchase<br><span style="font-size:10px;color:var(--warm-gray);display:block;margin-top:4px">Status: ${canRevealGlow ? `Active! (${state.glow20Remaining} uses left)` : 'Locked (Place order KES 5,000+)'}</span>`;
+  }
+
+  // 3. BLOOM10: reveal only after user has made their 10th purchase
+  const canRevealBloom = state.purchaseCount >= 10;
+  updateCodeUI('code-bloom', 'btn-bloom', canRevealBloom);
+  const descBloom = document.getElementById('desc-bloom');
+  if (descBloom) {
+    descBloom.innerHTML = `10% discount after your 10th store purchase<br><span style="font-size:10px;color:var(--warm-gray);display:block;margin-top:4px">Status: ${state.purchaseCount}/10 store purchases</span>`;
+  }
+
+  // 4. FREERIDE: reveal & activate once cart > 2000, deactivates if < 2000
+  const canRevealFreeride = cartTotal > 2000;
+  updateCodeUI('code-freeride', 'btn-freeride', canRevealFreeride);
+  const descFreeride = document.getElementById('desc-freeride');
+  if (descFreeride) {
+    descFreeride.innerHTML = `Reveals & activates for carts over KES 2,000<br><span style="font-size:10px;color:var(--warm-gray);display:block;margin-top:4px">Status: Cart KES ${cartTotal.toLocaleString()} ${canRevealFreeride ? '(Activated!)' : '(Under KES 2,000)'}</span>`;
+  }
+
+  const uniEl = document.getElementById('code-universal');
+  if (uniEl) {
+    if (cartTotal > 10500) uniEl.classList.remove('code-blurred');
+    else uniEl.classList.add('code-blurred');
+  }
+}
+
+function updateCodeUI(id, btnId, conditionMet) {
+  const el = document.getElementById(id);
+  const btn = document.getElementById(btnId);
+  if (!el || !btn) return;
+  if (conditionMet) {
+    el.classList.remove('code-blurred');
+    btn.style.opacity = "1";
+    btn.style.pointerEvents = "auto";
+  } else {
+    el.classList.add('code-blurred');
+    btn.style.opacity = "0.5";
+    btn.style.pointerEvents = "none";
+  }
+}
+
+function copyCode(code, btnId) {
+  navigator.clipboard && navigator.clipboard.writeText(code);
+  showToast('Code ' + code + ' copied!');
+}
+
+function applyPromoCode(inputVal) {
+  const val = (inputVal || '').trim().toUpperCase();
+  if (!val) return;
+  const subtotal = cart.reduce((a, b) => a + b.price, 0);
+  const state = getUserState();
+  
+  if (val === 'FREERIDE') {
+    if (subtotal <= 2000) {
+      showToast('FREERIDE requires cart over KES 2,000');
+      return;
+    }
+    appliedPromo = 'FREERIDE';
+    showToast('FREERIDE applied: Free Delivery active!');
+  } else if (val === 'NEWBIE15') {
+    if (!currentUser) {
+      showToast('Please sign in to use NEWBIE15');
+      return;
+    }
+    if (!(currentUser.signInCount === 1 || currentUser.signInCount === 15)) {
+      showToast('NEWBIE15 is only available on your 1st and 15th sign-in');
+      return;
+    }
+    appliedPromo = 'NEWBIE15';
+    showToast('NEWBIE15 applied: 15% discount active!');
+  } else if (val === 'BLOOM10') {
+    if (state.purchaseCount < 10) {
+      showToast(`BLOOM10 unlocks after 10 purchases (You have ${state.purchaseCount})`);
+      return;
+    }
+    appliedPromo = 'BLOOM10';
+    showToast('BLOOM10 applied: 10% discount active!');
+  } else if (val === 'GLOW20') {
+    if (!state.glow20Unlocked || state.glow20Remaining <= 0) {
+      showToast('GLOW20 unlocks after a purchase of KES 5,000 and above');
+      return;
+    }
+    appliedPromo = 'GLOW20';
+    showToast(`GLOW20 applied: 20% discount active (${state.glow20Remaining} uses left)!`);
+  } else if (val === 'UNIVERSAL30' || val === 'BLOOM30') {
+    if (subtotal <= 10500) {
+      showToast('UNIVERSAL30 requires orders above KES 10,500');
+      return;
+    }
+    appliedPromo = 'UNIVERSAL30';
+    showToast('UNIVERSAL30 applied: 30% discount active!');
+  } else {
+    showToast('Invalid promo code');
+    return;
+  }
+  
+  renderCart();
+  if (document.getElementById('checkout-overlay').classList.contains('open')) {
+    renderCheckoutStep();
+  }
+}
+
+function applyShopPromo() {
+  const input = document.getElementById('shop-promo-input');
+  if (input) applyPromoCode(input.value);
+}
 
 // ── ACCOUNT ────────────────────────────────────────────────
 let accounts = {};
@@ -1458,20 +2105,35 @@ function closeAccountOnOverlay(e) {
 
 function renderAccountPanel() {
   const body = document.getElementById('account-modal-body');
+  if (document.getElementById('page-offers').classList.contains('active')) refreshOffers();
+  const state = getUserState();
   if (currentUser) {
     body.innerHTML = `
       <div class="account-logged-in">
-        <div class="account-avatar">👤</div>
+        <div class="account-avatar"><i class="ti ti-user"></i></div>
         <p style="font-family:var(--font);font-size:18px;font-style:italic;color:var(--charcoal);margin-bottom:4px">${currentUser.name}</p>
         <p style="font-size:12px;color:var(--warm-gray);margin-bottom:1.4rem">${currentUser.email||currentUser.phone}</p>
         <div style="background:var(--cream);border:0.5px solid var(--border);border-radius:8px;padding:1rem;text-align:left;margin-bottom:1.2rem">
           <p style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Account Details</p>
-          ${currentUser.email?`<p style="font-size:12px;color:var(--warm-gray);margin-bottom:4px">📧 ${currentUser.email}</p>`:''}
-          ${currentUser.phone?`<p style="font-size:12px;color:var(--warm-gray);margin-bottom:4px">📞 ${currentUser.phone}</p>`:''}
-          <p style="font-size:12px;color:var(--warm-gray)">🛍 ${cart.length} item${cart.length!==1?'s':''} in bag</p>
+          ${currentUser.email?`<p style="font-size:12px;color:var(--warm-gray);margin-bottom:4px"><i class="ti ti-mail" style="margin-right:4px"></i> ${currentUser.email}</p>`:''}
+          ${currentUser.phone?`<p style="font-size:12px;color:var(--warm-gray);margin-bottom:4px"><i class="ti ti-phone" style="margin-right:4px"></i> ${currentUser.phone}</p>`:''}
+          <p style="font-size:12px;color:var(--warm-gray);margin-bottom:4px"><i class="ti ti-shopping-bag" style="margin-right:4px"></i> ${cart.length} item${cart.length!==1?'s':''} in bag</p>
+          <p style="font-size:12px;color:var(--warm-gray);margin-bottom:4px"><i class="ti ti-key" style="margin-right:4px"></i> Sign-In Count: <strong>${currentUser.signInCount || 1}</strong></p>
+          <p style="font-size:12px;color:var(--warm-gray)"><i class="ti ti-receipt" style="margin-right:4px"></i> Realised Spend: <strong>KES ${(state.realisedSpend || 0).toLocaleString()}</strong></p>
+        </div>
+        <div style="margin-bottom:1.2rem;background:var(--ivory);border:0.5px dashed var(--gold);border-radius:6px;padding:8px;text-align:center">
+          <p style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--warm-gray);margin-bottom:6px">⚡ Quick Test Simulators</p>
+          <div style="display:flex;gap:4px;flex-wrap:wrap">
+            <button class="btn-outline" style="flex:1;padding:5px;font-size:9px" onclick="currentUser.signInCount=15;refreshOffers();renderAccountPanel();showToast('Simulated 15th Sign-In')">15th Login</button>
+            <button class="btn-outline" style="flex:1;padding:5px;font-size:9px" onclick="currentUser.purchaseCount=10;refreshOffers();renderAccountPanel();showToast('Simulated 10th Purchase')">10 Orders</button>
+            <button class="btn-outline" style="flex:1;padding:5px;font-size:9px" onclick="currentUser.realisedSpend=5000;refreshOffers();renderAccountPanel();showToast('Set KES 5,000 Realised Spend')">5k Spend</button>
+            <button class="btn-outline" style="flex:1;padding:5px;font-size:9px" onclick="addToCart('Luxury Mystery Box','https://images.unsplash.com/photo-1694481901573-a970f982ac5e?w=400&h=240&fit=crop&auto=format','KES 11,000');showToast('Added KES 11,000 order to bag')">+11k Bag</button>
+            <button class="btn-outline" style="flex:1;padding:5px;font-size:9px" onclick="currentUser.glow20Unlocked=true;currentUser.glow20Remaining=3;refreshOffers();renderAccountPanel();showToast('Unlocked GLOW20')">Unlock GLOW20</button>
+          </div>
         </div>
         <button class="btn-primary" style="width:100%;padding:12px;margin-bottom:8px" onclick="toggleAccount();toggleCart()">View My Bag</button>
-        <button class="btn-outline" style="width:100%;padding:11px;font-size:11px" onclick="currentUser=null;renderAccountPanel();showToast('Signed out. See you soon! 👋')">Sign Out</button>
+        <button class="btn-outline" style="width:100%;padding:11px;font-size:11px;margin-bottom:8px" onclick="toggleAccount();toggleWishlistDrawer()">My Wishlist ❤️ (${getUserWishlist().size})</button>
+        <button class="btn-outline" style="width:100%;padding:11px;font-size:11px" onclick="currentUser=null;refreshOffers();renderCart();renderAccountPanel();if(document.getElementById('wishlist-overlay').classList.contains('open'))renderWishlistDrawer();if(document.getElementById('page-shop').classList.contains('active'))applyShopFilters();showToast('Signed out. See you soon!')">Sign Out</button>
       </div>`;
     return;
   }
@@ -1481,21 +2143,31 @@ function renderAccountPanel() {
       <button class="account-tab" id="atab-register" onclick="switchAccountTab('register')">Create Account</button>
     </div>
     <div class="account-panel active" id="apanel-signin">
-      <div class="aform-group"><label>Email or Phone Number</label><input type="text" id="signin-id" placeholder="e.g. 0706081110 or you@email.com"/></div>
+      <div class="aform-group"><label>Email or Phone Number</label><input type="text" id="signin-id" placeholder="0712345678 or you@email.com"/></div>
       <div class="aform-group"><label>Password</label><input type="password" id="signin-pass" placeholder="Your password"/></div>
       <button class="btn-primary" style="width:100%;padding:12px;margin-top:0.4rem" onclick="doSignIn()">Sign In</button>
       <div class="account-divider">or</div>
-      <p style="font-size:12px;color:var(--warm-gray);text-align:center">New to Bloom & Gloom? <span style="color:var(--gold);cursor:pointer;text-decoration:underline" onclick="switchAccountTab('register')">Create an account</span></p>
+      <p style="font-size:12px;color:var(--warm-gray);text-align:center">New to Beauty & Bold? <span style="color:var(--gold);cursor:pointer;text-decoration:underline" onclick="switchAccountTab('register')">Create an account</span></p>
     </div>
     <div class="account-panel" id="apanel-register">
-      <div class="aform-group"><label>Full Name</label><input type="text" id="reg-name" placeholder="e.g. Amina Wanjiru"/></div>
+      <div class="aform-group"><label>Full Name</label><input type="text" id="reg-name" placeholder="Jane Doe"/></div>
       <div class="aform-group"><label>Email Address</label><input type="email" id="reg-email" placeholder="you@example.com"/></div>
-      <div class="aform-group"><label>Phone Number</label><input type="tel" id="reg-phone" placeholder="e.g. 0706081110"/></div>
+      <div class="aform-group"><label>Phone Number</label><input type="tel" id="reg-phone" placeholder="0712345678"/></div>
       <div class="aform-group"><label>Password</label><input type="password" id="reg-pass" placeholder="Create a password (min 6 chars)"/></div>
       <div class="aform-group"><label>Confirm Password</label><input type="password" id="reg-pass2" placeholder="Repeat password"/></div>
       <button class="btn-primary" style="width:100%;padding:12px;margin-top:0.4rem" onclick="doRegister()">Create My Account</button>
       <p style="font-size:11px;color:var(--warm-gray);text-align:center;margin-top:0.8rem;line-height:1.5">By creating an account you agree to our <span style="color:var(--gold)">Terms & Privacy Policy</span></p>
-    </div>`;
+    </div>
+    <div style="margin-top:1.4rem;background:var(--ivory);border:0.5px dashed var(--gold);border-radius:6px;padding:8px;text-align:center">
+      <p style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--warm-gray);margin-bottom:6px">⚡ Guest Test Simulators</p>
+      <div style="display:flex;gap:4px;flex-wrap:wrap">
+        <button class="btn-outline" style="flex:1;padding:5px;font-size:9px" onclick="guestState.purchaseCount=10;refreshOffers();showToast('Guest: Set 10 Purchases')">10 Orders</button>
+        <button class="btn-outline" style="flex:1;padding:5px;font-size:9px" onclick="guestState.realisedSpend=5000;refreshOffers();showToast('Guest: Set KES 5,000 Realised Spend')">5k Spend</button>
+        <button class="btn-outline" style="flex:1;padding:5px;font-size:9px" onclick="addToCart('Luxury Mystery Box','https://images.unsplash.com/photo-1694481901573-a970f982ac5e?w=400&h=240&fit=crop&auto=format','KES 11,000');showToast('Added KES 11,000 order to bag')">+11k Bag</button>
+        <button class="btn-outline" style="flex:1;padding:5px;font-size:9px" onclick="guestState.glow20Unlocked=true;guestState.glow20Remaining=3;refreshOffers();showToast('Guest: Unlocked GLOW20')">Unlock GLOW20</button>
+      </div>
+    </div>
+    <button class="btn-outline" style="width:100%;padding:11px;font-size:11px;margin-top:8px" onclick="toggleAccount();toggleWishlistDrawer()">Guest Wishlist ❤️ (${getUserWishlist().size})</button>`;
 }
 
 function switchAccountTab(tab) {
@@ -1510,11 +2182,16 @@ function doSignIn() {
   const pass = document.getElementById('signin-pass').value;
   if (!id || !pass) { showToast('Please fill in all fields ⚠️'); return; }
   const acc = accounts[id.toLowerCase()];
-  if (!acc) { showToast('No account found. Please register first ✨'); switchAccountTab('register'); return; }
+  if (!acc) { showToast('No account found. Please register first'); switchAccountTab('register'); return; }
   if (acc.password !== pass) { showToast('Incorrect password — please try again'); return; }
+  acc.signInCount = (acc.signInCount || 0) + 1;
   currentUser = acc;
   renderAccountPanel();
-  showToast('Welcome back, '+acc.name.split(' ')[0]+'! 🌸');
+  refreshOffers();
+  renderCart();
+  if (document.getElementById('wishlist-overlay').classList.contains('open')) renderWishlistDrawer();
+  if (document.getElementById('page-shop').classList.contains('active')) typeof applyShopFilters === 'function' && applyShopFilters();
+  showToast('Welcome back, '+acc.name.split(' ')[0]+'!');
 }
 
 function doRegister() {
@@ -1529,10 +2206,14 @@ function doRegister() {
   if (pass !== pass2)     { showToast('Passwords do not match ⚠️'); return; }
   const key = (email || phone).toLowerCase();
   if (accounts[key])      { showToast('Account already exists — please sign in'); switchAccountTab('signin'); return; }
-  accounts[key] = { name, email, phone, password: pass };
+  accounts[key] = { name, email, phone, password: pass, signInCount: 1, purchaseCount: 0, glow20Unlocked: false, glow20Remaining: 0, realisedSpend: 0, wishlist: new Set() };
   currentUser = accounts[key];
   renderAccountPanel();
-  showToast('Account created! Welcome to Bloom & Gloom, '+name.split(' ')[0]+' 🎉');
+  refreshOffers();
+  renderCart();
+  if (document.getElementById('wishlist-overlay').classList.contains('open')) renderWishlistDrawer();
+  if (document.getElementById('page-shop').classList.contains('active')) typeof applyShopFilters === 'function' && applyShopFilters();
+  showToast('Account created! Welcome to Beauty & Bold, '+name.split(' ')[0]);
 }
 
 function toggleContactModal() {
@@ -1565,7 +2246,7 @@ let checkoutForms = [
     <div class="form-group"><label>CVV</label><input type="text" placeholder="•••"/></div>
     <div class="form-group full"><label>Name on Card</label><input type="text" placeholder="Full Name"/></div>
   </div>
-  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--warm-gray);margin-top:4px"><span>🔒</span>Secured with 256-bit SSL encryption.</div>`,
+  <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--warm-gray);margin-top:4px"><span><i class="ti ti-lock"></i></span>Secured with 256-bit SSL encryption.</div>`,
   ``
 ];
 
@@ -1578,10 +2259,18 @@ function renderCheckoutStep() {
     el.className = 'checkout-step ' + (i+1<checkoutStep?'done':i+1===checkoutStep?'active':'pending');
   });
   if (checkoutStep === 3) {
+    const totals = getCartTotals();
     checkoutForms[2] = `<div style="font-size:13px;color:var(--warm-gray);margin-bottom:1rem">Please review your order before confirming.</div>
     <div style="border:0.5px solid var(--border);border-radius:6px;padding:1rem;margin-bottom:1rem">
-      ${cart.map(i=>`<div style="display:flex;justify-content:space-between;margin-bottom:6px"><span>${i.emoji} ${i.name}</span><span style="font-family:var(--font);font-style:italic">KES ${i.price.toLocaleString()}</span></div>`).join('')}
-      <div style="border-top:0.5px solid var(--border);padding-top:8px;display:flex;justify-content:space-between;font-weight:600"><span>Total</span><span style="font-family:var(--font);font-style:italic;color:var(--gold-deep)">KES ${cart.reduce((a,b)=>a+b.price,0).toLocaleString()}</span></div>
+      ${cart.map(i=>`<div style="display:flex;justify-content:space-between;margin-bottom:6px"><span>${i.name}</span><span style="font-family:var(--font);font-style:italic">KES ${i.price.toLocaleString()}</span></div>`).join('')}
+      <div style="border-top:0.5px solid var(--border);padding-top:8px;margin-top:8px;display:flex;justify-content:space-between;font-size:12px;color:var(--warm-gray)"><span>Subtotal</span><span>KES ${totals.subtotal.toLocaleString()}</span></div>
+      ${totals.discount > 0 ? `<div style="display:flex;justify-content:space-between;font-size:12px;color:var(--gold);margin-top:4px"><span>Discount (${totals.discountLabel})</span><span>-KES ${totals.discount.toLocaleString()}</span></div>` : ''}
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--warm-gray);margin-top:4px"><span>Shipping</span><span>${totals.shipping === 0 ? (totals.isFreerideActive ? 'FREE (FREERIDE)' : 'FREE') : 'KES ' + totals.shipping.toLocaleString()}</span></div>
+      <div style="border-top:0.5px solid var(--border);padding-top:8px;margin-top:8px;display:flex;justify-content:space-between;font-weight:600"><span>Total</span><span style="font-family:var(--font);font-style:italic;color: var(--gold-deep-text)">KES ${totals.total.toLocaleString()}</span></div>
+    </div>
+    <div style="display:flex;gap:4px;margin-bottom:1rem">
+      <input type="text" id="checkout-promo-input" placeholder="Have a promo code?" value="${appliedPromo || ''}" style="flex:1;padding:8px;border:0.5px solid var(--border);border-radius:2px;font-size:12px;outline:none;background:var(--ivory);color:var(--charcoal)">
+      <button class="btn-primary" style="padding:8px 14px;font-size:10px" onclick="applyPromoCode(document.getElementById('checkout-promo-input').value)">Apply</button>
     </div>`;
   }
   document.getElementById('checkout-body').innerHTML = checkoutForms[checkoutStep-1];
@@ -1594,7 +2283,30 @@ function renderCheckoutStep() {
 }
 
 function placeOrder() {
-  document.getElementById('checkout-body').innerHTML = `<div class="success-screen"><div class="success-icon">🎉</div><h4>Order Placed Successfully!</h4><p>Thank you for choosing Bloom & Gloom. Your beauty essentials will be lovingly packaged and dispatched within 1–2 business days.</p><br><p style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gold)">Order #BG-2026-08471</p></div>`;
+  const totals = getCartTotals();
+  const state = getUserState();
+  
+  // Check GLOW20 unlock condition (purchase for KES 5,000 and above)
+  const unlockedNow = totals.subtotal >= 5000 || totals.total >= 5000;
+  
+  if (appliedPromo === 'GLOW20' && state.glow20Remaining > 0) {
+    state.glow20Remaining--;
+    if (state.glow20Remaining === 0) {
+      state.glow20Unlocked = false;
+    }
+  }
+  
+  state.purchaseCount = (state.purchaseCount || 0) + 1;
+  
+  if (unlockedNow) {
+    state.glow20Unlocked = true;
+    state.glow20Remaining = 3;
+    setTimeout(() => showToast('🌟 Order over KES 5,000 unlocked GLOW20 (20% off next 3 purchases)!'), 1200);
+  }
+  
+  appliedPromo = null;
+  
+  document.getElementById('checkout-body').innerHTML = `<div class="success-screen"><div class="success-icon"><i class="ti ti-confetti" style="color:var(--gold)"></i></div><h4>Order Placed Successfully!</h4><p>Thank you for choosing Beauty & Bold. Your beauty essentials will be lovingly packaged and dispatched within 1–2 business days.</p><br><p style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gold)">Order #BB-2026-${Math.floor(10000 + Math.random() * 90000)}</p></div>`;
   document.getElementById('checkout-nav').innerHTML = `<button class="btn-outline" style="flex:1;padding:12px;font-size:11px" onclick="document.getElementById('checkout-overlay').classList.remove('open');cart=[];renderCart()">Continue Shopping</button>`;
   cart=[]; renderCart();
 }
@@ -1617,8 +2329,8 @@ function renderEditorialGrid() {
 
   el.innerHTML = picks.map(p => `
     <div class="bs-card" onclick="goToProduct(${p.id})">
-      <div class="bs-img">
-        <span>${p.emoji}</span>
+      <div class="bs-img" style="padding:0;overflow:hidden;position:relative">
+        ${p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;display:block">` : `<span style="width:100%;height:100%;display:flex;align-items:center;justify-content:center"><i class="ti ti-photo" style="font-size:28px;color:var(--warm-gray)"></i></span>`}
         ${p.badge ? `<span class="bs-badge">${p.badge}</span>` : ''}
       </div>
       <div class="bs-info">
@@ -1627,7 +2339,7 @@ function renderEditorialGrid() {
         <p class="bs-stars">${'★'.repeat(Math.floor(p.rating))} <span style="font-size:9px;color:var(--warm-gray)">(${p.reviews.toLocaleString()})</span></p>
         <div class="bs-row">
           <p class="bs-price">${p.price}</p>
-          <button class="product-add" onclick="event.stopPropagation();addToCart('${p.name}','${p.emoji}','${p.price}')">+</button>
+          <button class="product-add" onclick="event.stopPropagation();addToCart('${p.name}','${p.img}','${p.price}')">+</button>
         </div>
       </div>
     </div>`).join('');
@@ -1635,16 +2347,48 @@ function renderEditorialGrid() {
 
 function scrollBestsellers(dir) {
   const track = document.getElementById('home-editorial');
-  track.scrollBy({ left: dir * 580, behavior: 'smooth' });
+  // If GSAP ScrollTrigger is active (wrapper has transform), use it
+  const st = ScrollTrigger.getAll().find(st => st.vars.trigger === track.closest('.hs-section'));
+  if (st && st.isActive && track.style.transform) {
+    // GSAP is controlling - use scroll position
+    const currentScroll = window.scrollY;
+    const scrollAmount = 400;
+    window.scrollTo({ top: currentScroll + dir * scrollAmount, behavior: 'smooth' });
+  } else {
+    // Fallback to native scroll
+    track.scrollBy({ left: dir * 580, behavior: 'smooth' });
+  }
 }
 
 function showPage(name) {
+  const currentActive = document.querySelector('.page.active');
+  const targetPage = document.getElementById('page-' + name);
+  if (!targetPage || (currentActive && currentActive.id === 'page-' + name)) return;
+  
+  if (name === 'offers') refreshOffers();
+  if (name === 'shop') {
+    currentShopGroup = null;
+    currentShopSidebarCat = 'all';
+    const allRadio = document.getElementById('scat-all');
+    if (allRadio) allRadio.checked = true;
+    typeof applyShopFilters === 'function' && applyShopFilters();
+  }
+  
+  doPageSwitch(name);
+}
+
+// Internal page switch (no animation)
+function doPageSwitch(name) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
   const navEl = document.getElementById('nav-'+name);
   if (navEl) navEl.classList.add('active');
   window.scrollTo(0,0);
+  // Refresh ScrollTrigger after page change
+  if (typeof ScrollTrigger !== 'undefined') {
+    ScrollTrigger.refresh();
+  }
 }
 
 function showToast(msg) {
@@ -1655,7 +2399,7 @@ function showToast(msg) {
 }
 
 renderEditorialGrid();
-renderProducts('shop-products', products);
+applyShopFilters(); // initial filtered render
 renderCart();
 
 function toggleMobileNav() {
@@ -1667,7 +2411,176 @@ document.querySelectorAll('.nav-links a').forEach(a =>
   )
 );
 
-/* ── HERO CANVAS — fluid orb animation ──────────────────── */
+/* ── PRODUCT DETAIL PAGE ─────────────────────────────────── */
+let currentProductId = null;
+
+const productDescriptions = {
+  'Foundation':      'A flawless-finish formula that blends seamlessly for buildable, all-day coverage. Infused with skin-loving botanicals to hydrate, smooth, and perfect your complexion while letting your skin breathe naturally.',
+  'Concealer':       'A lightweight yet full-coverage concealer that instantly brightens and erases imperfections. Enriched with vitamin E to nourish delicate under-eye skin while delivering a natural, radiant finish that lasts all day.',
+  'Eye':             'Precision-crafted to define, dramatise, and elevate your eye look. This long-wearing formula stays vibrant from morning to midnight, resisting humidity, smudging, and all the moments in between.',
+  'Lip':             'Luxuriously pigmented for bold, luscious colour that nourishes as it adorns. Infused with conditioning oils to keep lips soft, smooth, and irresistibly glossy from the first swipe.',
+  'Powders':         'A finely milled, weightless powder that sets makeup beautifully, controls shine, and extends wear — all without masking your natural glow or settling into fine lines.',
+  'Setting Spray':   'Lock in your complete look all day with this refreshing, fine-mist formula. Extends wear, reduces shine, and leaves skin with a dewy, freshly-perfumed finish that photographers love.',
+  'Primer':          'Prep your canvas to perfection with this silky, smoothing primer. It minimises the appearance of pores, refines skin texture, and helps every layer of makeup above it last up to 16 hours.',
+  'Highlighter':     'Illuminate your best features with this ultra-pigmented, multi-dimensional highlighter. Build from a subtle, skin-like sheen all the way to a blinding, editorial-worthy glow.',
+  'Blush':           'A silky-smooth blush that delivers the most natural flush of colour imaginable. Finely milled pigments blend effortlessly into skin for a healthy, lit-from-within finish.',
+  'Brushes':         'Professional-grade brushes crafted with ultra-soft, synthetic bristles. Designed to pick up pigment beautifully and deposit it flawlessly — for a result that looks like it was done by a pro.',
+  'Blenders':        'Achieve a seamless, airbrushed finish with this ultra-soft, bouncy blending tool. Works with liquid, cream, and powder formulas to melt product into skin without streaks or harsh lines.',
+};
+
+const reviewPool = [
+  { name:"Grace W.",     avatar:"GW", color:"#C9908A", stars:5, date:"June 2026",  text:"Absolutely love this! It lasted all day through Nairobi heat and still looked fresh at 10 pm. Will definitely repurchase — this is now a staple for me." },
+  { name:"Faith K.",     avatar:"FK", color:"#9C7A40", stars:5, date:"May 2026",   text:"The quality is unreal for the price. I've tried so many similar products but this one takes the crown. Beauty & Bold never misses!" },
+  { name:"Christine N.", avatar:"CN", color:"#8A9A8A", stars:4, date:"May 2026",   text:"Good product overall. Takes a little getting used to in terms of application, but once you master it the finish is absolutely gorgeous." },
+  { name:"Zara M.",      avatar:"ZM", color:"#7B6EA0", stars:5, date:"April 2026", text:"Smells divine and feels so luxurious. My go-to now — I even got my sister, my mum, and two colleagues hooked. Sending everyone here!" },
+  { name:"Binta O.",     avatar:"BO", color:"#5C8E7A", stars:5, date:"April 2026", text:"Fast delivery, gorgeous packaging, and the product itself is incredible. Pigment is on point and it blends like an absolute dream." },
+];
+
+let lastPageBeforeProduct = 'shop';
+function closeProductDetail() {
+  showPage(lastPageBeforeProduct || 'shop');
+}
+
+function showProduct(id) {
+  const activePage = document.querySelector('.page.active');
+  if (activePage && activePage.id !== 'page-product') {
+    lastPageBeforeProduct = activePage.id.replace('page-','');
+  }
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  currentProductId = id;
+
+  // Breadcrumb
+  document.getElementById('pd-breadcrumb').textContent = p.category.toUpperCase();
+
+  // Main image
+  const pdMainImg = document.getElementById('pd-main-img');
+  if (p.img) {
+    pdMainImg.innerHTML = `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;font-size:48px;color:var(--warm-gray)"><i class="ti ti-photo"></i></span>`;
+  } else {
+    pdMainImg.innerHTML = `<span style="font-size:48px;color:var(--warm-gray)"><i class="ti ti-photo"></i></span>`;
+  }
+
+  // Info
+  document.getElementById('pd-category').textContent = p.category;
+  document.getElementById('pd-name').textContent = p.name;
+  document.getElementById('pd-price').textContent = p.price;
+  // Thumbs (same photo, repeated — single product shot)
+  document.getElementById('pd-thumbs').innerHTML = [0,1,2].map((i) =>
+    `<div class="detail-thumb ${i===0?'active':''}" onclick="selectThumb(this,'${p.img||''}')">
+      ${p.img ? `<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:5px">` : `<span style="font-size:24px;color:var(--warm-gray)"><i class="ti ti-photo"></i></span>`}
+    </div>`
+  ).join('');
+  const oldEl = document.getElementById('pd-old');
+  oldEl.textContent = p.old || '';
+
+  // Stars
+  document.getElementById('pd-stars').innerHTML =
+    `<span>${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5 - Math.floor(p.rating))}</span>` +
+    `<small>${p.rating} &nbsp;·&nbsp; ${p.reviews.toLocaleString()} reviews</small>`;
+
+  // Description
+  document.getElementById('pd-desc').textContent =
+    productDescriptions[p.category] || 'A premium beauty essential crafted with purpose — designed to enhance your natural beauty with a touch of everyday luxury.';
+
+  // Stock (stable per product via id-based seed)
+  const stock = ((p.id * 7 + 13) % 38) + 3; // deterministic 3–40
+  const dot  = document.getElementById('pd-stock-dot');
+  const txt  = document.getElementById('pd-stock-text');
+  if (stock <= 5) {
+    dot.style.background = '#E57373';
+    txt.textContent = `Only ${stock} left in stock — order soon!`;
+  } else if (stock <= 15) {
+    dot.style.background = '#FFB74D';
+    txt.textContent = `${stock} units available`;
+  } else {
+    dot.style.background = '#4CAF50';
+    txt.textContent = `${stock} units in stock — ready to ship`;
+  }
+
+  // Reset qty & wishlist
+  document.getElementById('pd-qty').value = 1;
+  document.getElementById('pd-wish-btn').innerHTML = wishlist.has(id) ? '<i class="ti ti-heart-filled"></i>' : '<i class="ti ti-heart"></i>';
+
+  // Reviews
+  renderProductReviews(p);
+
+  showPage('product');
+}
+
+function changePdQty(d) {
+  const el = document.getElementById('pd-qty');
+  const v  = parseInt(el.value) + d;
+  if (v >= 1 && v <= 10) el.value = v;
+}
+
+function addPdToCart() {
+  const p = products.find(x => x.id === currentProductId);
+  if (!p) return;
+  const qty = parseInt(document.getElementById('pd-qty').value);
+  for (let i = 0; i < qty; i++) addToCart(p.name, p.img, p.price);
+}
+
+function togglePdWish() {
+  const btn = document.getElementById('pd-wish-btn');
+  if (wishlist.has(currentProductId)) {
+    wishlist.delete(currentProductId);
+    btn.innerHTML = '<i class="ti ti-heart"></i>';
+    showToast('Removed from wishlist');
+  } else {
+    wishlist.add(currentProductId);
+    btn.innerHTML = '<i class="ti ti-heart-filled"></i>';
+    showToast('Added to wishlist ❤️');
+  }
+  if (document.getElementById('wishlist-overlay') && document.getElementById('wishlist-overlay').classList.contains('open')) typeof renderWishlistDrawer === 'function' && renderWishlistDrawer();
+  if (document.getElementById('account-modal-overlay') && document.getElementById('account-modal-overlay').classList.contains('open')) typeof renderAccountPanel === 'function' && renderAccountPanel();
+}
+
+function renderProductReviews(p) {
+  // Rating distribution bars
+  const r = p.rating;
+  const bars = [
+    { label:'5 ★', pct: Math.round((r - 3.5) / 1.5 * 55 + 38) },
+    { label:'4 ★', pct: Math.round((5 - r) * 18 + 8)           },
+    { label:'3 ★', pct: 7  },
+    { label:'2 ★', pct: 3  },
+    { label:'1 ★', pct: 2  },
+  ].map(b => ({ ...b, pct: Math.min(98, Math.max(1, b.pct)) }));
+
+  document.getElementById('pd-review-headline').textContent = `${r} out of 5`;
+
+  document.getElementById('pd-review-summary').innerHTML = `
+    <div style="text-align:center;flex-shrink:0">
+      <div class="review-big">${r}</div>
+      <div style="font-size:18px;color:var(--gold);margin:4px 0">${'★'.repeat(Math.floor(r))}</div>
+      <div style="font-size:12px;color:var(--warm-gray)">${p.reviews.toLocaleString()} verified reviews</div>
+    </div>
+    <div class="review-bars" style="flex:1">
+      ${bars.map(b => `
+        <div class="review-bar-row">
+          <span class="review-bar-label">${b.label}</span>
+          <div class="review-bar-track"><div class="review-bar-fill" style="width:${b.pct}%"></div></div>
+          <span style="font-size:10px;color:var(--warm-gray);width:28px;flex-shrink:0">${b.pct}%</span>
+        </div>`).join('')}
+    </div>`;
+
+  document.getElementById('pd-review-cards').innerHTML = reviewPool.map(rv => `
+    <div class="review-card">
+      <div class="review-header">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;border-radius:50%;background:${rv.color};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;flex-shrink:0">${rv.avatar}</div>
+          <div>
+            <p class="review-author">${rv.name}</p>
+            <span style="font-size:11px;color:var(--gold)">${'★'.repeat(rv.stars)}</span>
+          </div>
+        </div>
+        <span class="review-date">${rv.date}</span>
+      </div>
+      <p class="review-text">"${rv.text}"</p>
+    </div>`).join('');
+}
+
+
 (function initHeroCanvas() {
   const canvas = document.getElementById('hero-canvas');
   if (!canvas) return;
@@ -1695,22 +2608,32 @@ document.querySelectorAll('.nav-links a').forEach(a =>
     const W = canvas.width, H = canvas.height;
     ctx.clearRect(0, 0, W, H);
 
-    // Base gradient
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+    // Base gradient — swaps to a dark, warm palette in dark mode so hero text stays legible
     const bg = ctx.createLinearGradient(0, 0, W, H);
-    bg.addColorStop(0,    '#F5EDE3');
-    bg.addColorStop(0.55, '#F2DDD9');
-    bg.addColorStop(1,    '#FAF6F2');
+    if (dark) {
+      bg.addColorStop(0,    '#211B16');
+      bg.addColorStop(0.55, '#2E2420');
+      bg.addColorStop(1,    '#15110D');
+    } else {
+      bg.addColorStop(0,    '#F5EDE3');
+      bg.addColorStop(0.55, '#F2DDD9');
+      bg.addColorStop(1,    '#FAF6F2');
+    }
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, W, H);
 
-    // Floating orbs
+    // Floating orbs — slightly brighter in dark mode so the glow still reads against the darker base
+    const peakAlpha = dark ? 0.62 : 0.52;
+    const midAlpha  = dark ? 0.24 : 0.18;
     for (const o of orbs) {
       const cx = (o.x + Math.sin(t * o.spd + o.ang)        * o.amp) * W;
       const cy = (o.y + Math.cos(t * o.spd * 0.73 + o.ang) * o.amp) * H;
       const r  = o.r * Math.min(W, H);
       const g  = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-      g.addColorStop(0,    `rgba(${o.col},0.52)`);
-      g.addColorStop(0.55, `rgba(${o.col},0.18)`);
+      g.addColorStop(0,    `rgba(${o.col},${peakAlpha})`);
+      g.addColorStop(0.55, `rgba(${o.col},${midAlpha})`);
       g.addColorStop(1,    `rgba(${o.col},0)`);
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, W, H);
@@ -1721,8 +2644,9 @@ document.querySelectorAll('.nav-links a').forEach(a =>
       W * (0.3 + 0.2 * Math.sin(t * 0.08)), 0,
       W * (0.7 + 0.2 * Math.cos(t * 0.06)), H
     );
+    const shimmerPeak = dark ? 0.07 : 0.04;
     shimmer.addColorStop(0,   'rgba(201,169,110,0)');
-    shimmer.addColorStop(0.5, 'rgba(201,169,110,0.04)');
+    shimmer.addColorStop(0.5, `rgba(201,169,110,${shimmerPeak})`);
     shimmer.addColorStop(1,   'rgba(201,169,110,0)');
     ctx.fillStyle = shimmer;
     ctx.fillRect(0, 0, W, H);
@@ -1800,4 +2724,200 @@ document.querySelectorAll('.nav-links a').forEach(a =>
     };
   }
 })();
+
+/* ── DARK MODE ───────────────────────────────────────────── */
+function toggleDarkMode() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  const icon = document.querySelector('#dark-toggle i');
+  if (icon) {
+    icon.className = isDark ? 'ti ti-moon' : 'ti ti-sun';
+  }
+}
+
+/* ── SHOP FILTERS ────────────────────────────────────────── */
+function applyShopFilters() {
+  const slider = document.getElementById('price-slider');
+  const maxPrice = parseInt(slider ? slider.value : 3000);
+  const priceLabel = document.getElementById('price-val');
+  if (priceLabel) priceLabel.textContent = 'Up to KES ' + maxPrice.toLocaleString();
+
+  const banner = document.getElementById('shop-active-filter-banner');
+  const filterNameEl = document.getElementById('shop-filter-name');
+
+  if (currentShopGroup) {
+    if (banner) banner.style.display = 'flex';
+    const names = { face: 'Face Makeup', eye: 'Eye Makeup', lips: 'Lips & Cheeks', tools: 'Tools & Accessories' };
+    if (filterNameEl) filterNameEl.textContent = names[currentShopGroup] || currentShopGroup;
+  } else {
+    if (banner) banner.style.display = 'none';
+  }
+
+  // Sort
+  const sortEl = document.querySelector('.sort-select');
+  const sortVal = sortEl ? sortEl.value : '';
+
+  let filtered = products.filter(p => {
+    const num = parseInt(p.price.replace('KES ','').replace(/,/g,''));
+    if (num > maxPrice) return false;
+
+    if (currentShopGroup === 'face') {
+      if (!['Moisturizers','Foundations','Concealers','Powders','Setting Spray','Primer','Highlighter','Blush'].includes(p.category)) return false;
+    } else if (currentShopGroup === 'eye') {
+      if (!['Eye','Eye Makeup'].includes(p.category)) return false;
+    } else if (currentShopGroup === 'lips') {
+      if (!['Lip','Lips & Cheeks'].includes(p.category)) return false;
+    } else if (currentShopGroup === 'tools') {
+      if (!['Tools & Accessories','Brushes','Blenders'].includes(p.category)) return false;
+    }
+
+    if (typeof currentShopSidebarCat !== 'undefined' && currentShopSidebarCat && currentShopSidebarCat !== 'all') {
+      if (currentShopSidebarCat === 'Foundations' && p.category !== 'Foundations') return false;
+      if (currentShopSidebarCat === 'Concealers' && p.category !== 'Concealers') return false;
+      if (currentShopSidebarCat === 'Eye' && !['Eye','Eye Makeup'].includes(p.category)) return false;
+      if (currentShopSidebarCat === 'Lip' && p.category !== 'Lip') return false;
+      if (currentShopSidebarCat === 'Setting Spray' && p.category !== 'Setting Spray') return false;
+      if (currentShopSidebarCat === 'Tools' && !['Tools & Accessories','Brushes','Blenders'].includes(p.category)) return false;
+      if (currentShopSidebarCat === 'Moisturizers' && !['Moisturizers','Primer'].includes(p.category)) return false;
+      if (currentShopSidebarCat === 'Powders' && !['Powders','Blush','Highlighter'].includes(p.category)) return false;
+    }
+
+    return true;
+  });
+
+  // Sort
+  if (sortVal === 'Price: Low to High') {
+    filtered.sort((a,b) => parseInt(a.price.replace('KES ','').replace(/,/g,'')) - parseInt(b.price.replace('KES ','').replace(/,/g,'')));
+  } else if (sortVal === 'Price: High to Low') {
+    filtered.sort((a,b) => parseInt(b.price.replace('KES ','').replace(/,/g,'')) - parseInt(a.price.replace('KES ','').replace(/,/g,'')));
+  } else if (sortVal === 'Top Rated') {
+    filtered.sort((a,b) => b.rating - a.rating);
+  } else if (sortVal === 'Newest First') {
+    filtered.sort((a,b) => b.id - a.id);
+  }
+
+  // Update count
+  const countEl = document.querySelector('.shop-count strong');
+  if (countEl) countEl.textContent = filtered.length;
+
+  renderProducts('shop-products', filtered);
+}
+
+/* Hook sort select to filters */
+document.addEventListener('DOMContentLoaded', () => {
+  const sortEl = document.querySelector('.sort-select');
+  if (sortEl) sortEl.addEventListener('change', applyShopFilters);
+});
+
+/* ── PRODUCT DETAIL THUMB SELECT ─────────────────────────── */
+function selectThumb(el, imgSrc) {
+  document.querySelectorAll('.detail-thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const mainImg = document.getElementById('pd-main-img');
+  if (imgSrc) {
+    mainImg.innerHTML = `<img src="${imgSrc}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none;font-size:48px;color:var(--warm-gray)"><i class="ti ti-photo"></i></span>`;
+  } else {
+    mainImg.innerHTML = `<span style="font-size:48px;color:var(--warm-gray)"><i class="ti ti-photo"></i></span>`;
+  }
+}
+
+
+
+/* ── GSAP SCROLLTRIGGER HORIZONTAL SCROLL ────────────────── */
+(function initHorizontalScroll() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Wait for DOM to be ready
+  function setupHorizontalScroll() {
+    const wrapper = document.querySelector('.bestsellers-track');
+    const section = document.querySelector('.hs-section');
+    if (!wrapper || wrapper.dataset.hsInit === 'true') return;
+    wrapper.dataset.hsInit = 'true';
+
+    // Get the total scrollable width
+    const cards = wrapper.querySelectorAll('.bs-card');
+    if (cards.length === 0) return;
+
+    const totalWidth = wrapper.scrollWidth;
+    const viewportWidth = wrapper.parentElement.offsetWidth;
+    const scrollDistance = Math.max(0, totalWidth - viewportWidth);
+
+    if (scrollDistance <= 0) return;
+
+    // Create scroll-driven horizontal movement
+    const tween = gsap.to(wrapper, {
+      x: -scrollDistance,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 15%',
+        end: () => `+=${scrollDistance * 1.2}`,
+        scrub: 0.6,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          // Update progress bar if it exists
+          const progressBar = section.querySelector('.hs-progress-fill');
+          if (progressBar) {
+            progressBar.style.width = (self.progress * 100) + '%';
+          }
+        },
+        onEnter: () => {
+          const hint = section.querySelector('.hs-scroll-hint');
+          const bar = section.querySelector('.hs-progress-bar');
+          if (hint) hint.classList.add('visible');
+          if (bar) bar.classList.add('visible');
+        },
+        onLeave: () => {
+          const hint = section.querySelector('.hs-scroll-hint');
+          if (hint) hint.classList.remove('visible');
+        },
+        onEnterBack: () => {
+          const hint = section.querySelector('.hs-scroll-hint');
+          if (hint) hint.classList.add('visible');
+        },
+        onLeaveBack: () => {
+          const hint = section.querySelector('.hs-scroll-hint');
+          const bar = section.querySelector('.hs-progress-bar');
+          if (hint) hint.classList.remove('visible');
+          if (bar) bar.classList.remove('visible');
+        }
+      }
+    });
+
+    // Animate individual cards with subtle parallax
+    cards.forEach((card, i) => {
+      gsap.from(card, {
+        y: 30 + (i % 2) * 15,
+        opacity: 0.7,
+        scale: 0.95,
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 60%',
+          end: 'top 10%',
+          scrub: 1
+        }
+      });
+    });
+  }
+
+  // Setup after a short delay to ensure content is rendered
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(setupHorizontalScroll, 100));
+  } else {
+    setTimeout(setupHorizontalScroll, 100);
+  }
+
+  // Also re-setup after editorial grid render
+  const origRender = window.renderEditorialGrid;
+  if (origRender) {
+    window.renderEditorialGrid = function() {
+      origRender();
+      setTimeout(setupHorizontalScroll, 200);
+    };
+  }
+})();
+
 </script>

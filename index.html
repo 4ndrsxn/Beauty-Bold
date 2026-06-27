@@ -314,7 +314,6 @@
   .about-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; background: var(--ink); border-radius: 10px; padding: 2rem; text-align: center; }
   .about-stat-num { font-family: var(--font); font-size: 36px; color: var(--gold); font-style: italic; }
   .about-stat-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--warm-gray); margin-top: 4px; }
-  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
   .team-card { background: var(--ivory); border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; text-align: center; }
   .team-img { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 48px; }
   .team-t1 { background: linear-gradient(135deg, var(--nude), var(--blush)); }
@@ -617,7 +616,6 @@
     /* About page */
     .about-values { grid-template-columns: 1fr; }
     .about-stats { grid-template-columns: repeat(2, 1fr); }
-    .team-grid { grid-template-columns: repeat(2, 1fr); }
     .about-hero h1 { font-size: 30px; }
 
     /* Blog */
@@ -803,8 +801,11 @@
   }
 
 </style>
-
-<nav>
+ 
+  <h2 class="sr-only">Beauty & Bold — Luxury Cosmetics eCommerce Website</h2>
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+ 
+ <nav>
   <span class="nav-logo">Beauty <span>&</span> Bold</span>
   <div class="nav-links">
     <a onclick="showPage('home')" class="active" id="nav-home">Home</a>
@@ -1669,17 +1670,6 @@ function toggleProductWish(el, id) {
   }
   if (document.getElementById('wishlist-overlay') && document.getElementById('wishlist-overlay').classList.contains('open')) typeof renderWishlistDrawer === 'function' && renderWishlistDrawer();
   if (document.getElementById('account-modal-overlay') && document.getElementById('account-modal-overlay').classList.contains('open')) typeof renderAccountPanel === 'function' && renderAccountPanel();
-}
-
-function toggleWish(btn) {
-  btn.textContent = btn.textContent==='🤍' ? '❤️' : '🤍';
-  showToast(btn.textContent==='❤️' ? 'Added to wishlist ❤️' : 'Removed from wishlist');
-}
-
-function setThumb(el, emoji) {
-  document.querySelectorAll('.detail-thumb').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('detail-main-emoji').textContent = emoji;
 }
 
 function changeQty(d) {
